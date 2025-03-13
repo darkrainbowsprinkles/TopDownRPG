@@ -14,17 +14,16 @@ namespace RPG.Abilities.Targeting
         [SerializeField] float heightEffectOffset = 0.31f;
         [SerializeField] float timeToBlast = 5;
         [SerializeField] string targetingAnimationTrigger = "";
-
-        GameObject targetingEffectInstance = null;
-        GameObject playerReference = null;
+        GameObject targetingEffectInstance;
+        GameObject playerReference;
 
         public override void StartTargeting(AbilityData data, Action finished)
         {
             playerReference = GameObject.FindWithTag("Player");
-            data.StartCoroutine(WaitForBlast(data, finished));
+            data.StartCoroutine(Targeting(data, finished));
         }
 
-        private IEnumerator WaitForBlast(AbilityData data, Action finished)
+        IEnumerator Targeting(AbilityData data, Action finished)
         {
             data.GetUser().GetComponent<AIController>().enabled = false;
 
@@ -61,7 +60,7 @@ namespace RPG.Abilities.Targeting
             finished();
         }
 
-        private IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
+        IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
         {
             RaycastHit[] hits = Physics.SphereCastAll(point, areaAffectRadius, Vector3.up, 0);
 

@@ -15,7 +15,7 @@ namespace RPG.Abilities.Effects
             data.StartCoroutine(Effect(data, finished));
         }
 
-        private IEnumerator Effect(AbilityData data, Action finished)
+        IEnumerator Effect(AbilityData data, Action finished)
         {
             GameObject effectInstance = Instantiate(effectPrefab);
 
@@ -24,7 +24,7 @@ namespace RPG.Abilities.Effects
             if(destroyDelay > 0)
             {
                 yield return new WaitForSeconds(destroyDelay);
-                Destroy(effectInstance.gameObject);
+                Destroy(effectInstance);
             }
 
             finished();

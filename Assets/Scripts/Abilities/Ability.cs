@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using GameDevTV.Inventories;
 using RPG.Attributes;
-using RPG.Control;
 using RPG.Core;
 using UnityEngine;
 
@@ -46,7 +45,7 @@ namespace RPG.Abilities
             return true;
         }
 
-        private void TargetAquired(AbilityData data)
+        void TargetAquired(AbilityData data)
         {
             if(data.IsCancelled()) return;
 
@@ -72,9 +71,6 @@ namespace RPG.Abilities
             }
         }
 
-        private void EffectFinished()
-        {
-
-        }
+        void EffectFinished() { }
     }   
 }

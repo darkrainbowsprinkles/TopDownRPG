@@ -21,7 +21,10 @@ namespace RPG.Abilities.Effects
         {
             foreach(var effect in delayedEffects)
             {
-                if(effect.GetEffectInfo() == null) continue;
+                if(effect.GetEffectInfo() == null) 
+                {
+                    continue;
+                }
                 
                 foreach(var info in effect.GetEffectInfo())
                 {
@@ -30,11 +33,14 @@ namespace RPG.Abilities.Effects
             }
         }
 
-        private IEnumerator DelayedEffects(AbilityData data, Action finished)
+        IEnumerator DelayedEffects(AbilityData data, Action finished)
         {
             yield return new WaitForSeconds(delay);
 
-            if(data.IsCancelled() && abortIfCancelled) yield break;
+            if(data.IsCancelled() && abortIfCancelled) 
+            {
+                yield break;
+            }
             
             foreach(var effect in delayedEffects)
             {

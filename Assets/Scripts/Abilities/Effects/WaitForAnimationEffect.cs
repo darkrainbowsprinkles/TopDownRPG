@@ -16,7 +16,7 @@ namespace RPG.Abilities.Effects
             data.StartCoroutine(WaitForAnimationFinished(data));
         }
 
-        private IEnumerator WaitForAnimationFinished(AbilityData data)
+        IEnumerator WaitForAnimationFinished(AbilityData data)
         {
             Animator animator = data.GetUser().GetComponent<Animator>();
             Controller controller = data.GetUser().GetComponent<Controller>();
@@ -40,7 +40,7 @@ namespace RPG.Abilities.Effects
             controller.enabled = true;
         }
 
-        private bool FinishedPlaying(Animator animator)
+        bool FinishedPlaying(Animator animator)
         {
             var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 

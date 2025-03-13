@@ -37,20 +37,20 @@ namespace RPG.Abilities.Effects
             yield return $"{damage} HP damage on aquired targets";
         }
 
-        private void SpawnProjectileForTargetPoint(AbilityData data, Vector3 spawnPosition)
+        void SpawnProjectileForTargetPoint(AbilityData data, Vector3 spawnPosition)
         {
             Projectile projectile = Instantiate(projectilePrefab);
             projectile.transform.position = spawnPosition;
             projectile.SetProjectileInfo(data.GetTargetedPoint(), data.GetUser(), damage);
         }
 
-        private void SpawnProjectilesForTargets(AbilityData data, Vector3 spawnPosition)
+        void SpawnProjectilesForTargets(AbilityData data, Vector3 spawnPosition)
         {
-            foreach (var target in data.GetTargets())
+            foreach(var target in data.GetTargets())
             {
                 Health targetHealth = target.GetComponent<Health>();
 
-                if (targetHealth != null)
+                if(targetHealth != null)
                 {
                     Projectile projectile = Instantiate(projectilePrefab);
                     projectile.transform.position = spawnPosition;

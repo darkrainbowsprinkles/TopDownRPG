@@ -6,24 +6,8 @@ namespace RPG.Abilities
 {
     public class CooldownStore : MonoBehaviour
     {
-        Dictionary<InventoryItem, float> cooldownTimers = new Dictionary<InventoryItem, float>();
-        Dictionary<InventoryItem, float> initialCooldownTimes = new Dictionary<InventoryItem, float>();
-
-        private void Update()
-        {
-            var keys = new List<InventoryItem>(cooldownTimers.Keys);
-
-            foreach(InventoryItem ability in keys)
-            {
-                cooldownTimers[ability] -= Time.deltaTime;
-
-                if(cooldownTimers[ability] < 0)
-                {
-                    cooldownTimers.Remove(ability);
-                    initialCooldownTimes.Remove(ability);
-                }
-            }
-        }
+        Dictionary<InventoryItem, float> cooldownTimers = new();
+        Dictionary<InventoryItem, float> initialCooldownTimes = new();
 
         public void StartCooldown(InventoryItem ability, float cooldownTime)
         {
@@ -54,6 +38,22 @@ namespace RPG.Abilities
             }
 
             return cooldownTimers[ability] / initialCooldownTimes[ability];
+        }
+
+        void Update()
+        {
+            var keys = new List<InventoryItem>(cooldownTimers.Keys);
+
+            foreach(InventoryItem ability in keys)
+            {
+                cooldownTimers[ability] -= Time.deltaTime;
+
+                if(cooldownTimers[ability] < 0)
+                {
+                    cooldownTimers.Remove(ability);
+                    initialCooldownTimes.Remove(ability);
+                }
+            }
         }
     }
 }

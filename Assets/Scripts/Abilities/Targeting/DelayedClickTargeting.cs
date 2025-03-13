@@ -25,7 +25,7 @@ namespace RPG.Abilities.Targeting
             playerController.StartCoroutine(Targeting(data, playerController, finished));
         }
 
-        private IEnumerator Targeting(AbilityData data, PlayerController playerController, Action finished)
+        IEnumerator Targeting(AbilityData data, PlayerController playerController, Action finished)
         {
             Animator animator = playerController.GetComponent<Animator>();
             playerController.enabled = false;
@@ -89,7 +89,7 @@ namespace RPG.Abilities.Targeting
             finished();
         }
 
-        private IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
+        IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
         {
             RaycastHit[] hits = Physics.SphereCastAll(point, areaAffectRadius, Vector3.up, 0);
 
