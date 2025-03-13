@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RPG.Abilities
 {
-    public class AbilityData : IAction
+    public class AbilityData : ICancelable
     {
         GameObject user;
         Vector3 targetedPoint;

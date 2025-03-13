@@ -29,16 +29,14 @@ namespace RPG.Dialogue
             callingController.GetComponent<PlayerConversant>().StartDialogue(this, dialogue);
         }
 
-        public CursorType GetCursorType()
+        bool IRaycastable.HandleRaycast(PlayerController callingController)
         {
-            return CursorType.Dialogue;
-        }
-
-        public bool HandleRaycast(PlayerController callingController)
-        {
-            if(TryGetComponent<Health>(out Health health))
+            if(TryGetComponent(out Health health))
             {
-                if(health.IsDead) return false;
+                if(health.IsDead) 
+                {
+                    return false;
+                } 
             }
 
             if(dialogue == null)
@@ -52,6 +50,11 @@ namespace RPG.Dialogue
             }
 
             return true;
+        }
+
+        CursorType IRaycastable.GetCursorType()
+        {
+            return CursorType.Dialogue;
         }
     }
 }

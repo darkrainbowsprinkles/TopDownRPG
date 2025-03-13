@@ -5,7 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 3
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 51748920889891302, guid: 602cc502bade4b444ab927133e956ffd,
@@ -74,25 +74,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 51748920889891302, guid: 602cc502bade4b444ab927133e956ffd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -5306694157724500449}
-    - targetCorrespondingSourceObject: {fileID: 51748920889891302, guid: 602cc502bade4b444ab927133e956ffd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 316367206561778048}
-    - targetCorrespondingSourceObject: {fileID: 51748920889891302, guid: 602cc502bade4b444ab927133e956ffd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6679952269125380486}
-    - targetCorrespondingSourceObject: {fileID: 51748920889891302, guid: 602cc502bade4b444ab927133e956ffd,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1403147425819316770}
   m_SourcePrefab: {fileID: 100100000, guid: 602cc502bade4b444ab927133e956ffd, type: 3}
 --- !u!1 &3929965502715391977 stripped
 GameObject:
@@ -114,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
   conversantName: 
---- !u!114 &316367206561778048
+--- !u!114 &4540238995818074161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,33 +105,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3929965502715391977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf15ef3cc5905dc47bfbf210153dccdf, type: 3}
+  m_Script: {fileID: 11500000, guid: be58d40d66b60e446906d72501cdfc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggersSetup: []
---- !u!114 &6679952269125380486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929965502715391977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e8cd7b13c9e6a4c81866958133aa8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quests: []
---- !u!114 &1403147425819316770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3929965502715391977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c0f1a1d4aa79a469f2b4b64748a3e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 0}

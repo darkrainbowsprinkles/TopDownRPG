@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: I want to become stronger
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
-    x: 552
+    x: 600
     y: 17
     width: 200
     height: 100
   children:
   - f23582a4-6932-4fb9-8c84-bc1c31388414
   - e1ad0169-7233-47be-856c-e5ccfe45bb4d
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-8493066817280615215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41,6 +41,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Nevermind
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 607
@@ -49,10 +53,6 @@ MonoBehaviour:
     height: 100
   children:
   - 123f29b8-d9b0-45a2-abd9-2e447f6e8bb5
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-4463837648698354489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,14 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: 'Ah the desire of strength burn within you. However, you have not yet reached
     the required level to receive my blessings. '
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 6
+        parameters: []
+        negate: 1
   rect:
     serializedVersion: 2
     x: 868
@@ -76,14 +84,6 @@ MonoBehaviour:
     height: 100
   children:
   - d1aa6087-248e-4524-baef-452324dfb1fe
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: HasTraitPoints
-        parameters: []
-        negate: 1
 --- !u!114 &-3551559357651606358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: What brings you to my presence?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 354
@@ -107,10 +111,6 @@ MonoBehaviour:
   children:
   - 38581d2a-a14b-4b40-aae5-3cc442bb04d7
   - 70df4dfc-45b8-40e4-a438-fc5cbe0e8c92
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-2760402046140037411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +126,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Welcome mortal, I am the embodiment of the godesses's power, ready to bestow
     blessings upon you.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 141
@@ -134,10 +138,6 @@ MonoBehaviour:
     height: 100
   children:
   - f74538de-29f6-473a-8ee3-4daa9bdc2e7e
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-2604421575613304341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: You're most welcome young adventurer.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 866
@@ -159,10 +163,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-1252021337782811724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +178,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Fear not, for as you progress on your journey and grow in experience, my
     powers shall be available for you.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1139
@@ -185,10 +189,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +211,6 @@ MonoBehaviour:
   - {fileID: -2604421575613304341}
   - {fileID: -4463837648698354489}
   - {fileID: -1252021337782811724}
-  newNodeOffset: {x: 250, y: 0}
 --- !u!114 &6013002949939790171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +226,15 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Very well. Embrace the strength within your spirit, focus on the pulsating
     energy around you, and receive my gift.
+  onEnterActions: []
+  onExitActions:
+  - Show Traits
+  condition:
+    and:
+    - or:
+      - predicate: 6
+        parameters: []
+        negate: 0
   rect:
     serializedVersion: 2
     x: 881
@@ -235,15 +243,6 @@ MonoBehaviour:
     height: 100
   children:
   - 726389d6-6b4c-423d-b01b-434af4ec4038
-  onEnterActions: []
-  onExitActions:
-  - Show Traits
-  condition:
-    and:
-    - or:
-      - predicate: HasTraitPoints
-        parameters: []
-        negate: 0
 --- !u!114 &6795199854389245742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +258,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: May your spells dazzle and your incantations reshape reality. Remember, magic
     is a force that demands respect and responsibility. Wield it wisely in your journey.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1144
@@ -266,7 +269,3 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []

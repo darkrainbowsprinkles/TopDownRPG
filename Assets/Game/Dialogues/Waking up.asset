@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Get yoursealf ready before we leave dumbhead.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1315
@@ -22,10 +26,6 @@ MonoBehaviour:
     height: 100
   children:
   - 4b42938d-20fd-4d00-b4b5-fef3019cc07d
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-9016256453691609505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,6 +40,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Yeah.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 4
+        parameters:
+        - Get ready for school
+        - a
+        negate: 0
   rect:
     serializedVersion: 2
     x: 576
@@ -48,16 +58,6 @@ MonoBehaviour:
     height: 100
   children:
   - 57f480da-dcae-43c8-8b1c-3dfaa2c11874
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: Objective Completed
-        parameters:
-        - Get ready for school
-        - a
-        negate: 0
 --- !u!114 &-8819773581544525338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +72,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Ready?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 2
+        parameters:
+        - Get ready for school
+        negate: 0
+    - or:
+      - predicate: 3
+        parameters:
+        - Get ready for school
+        negate: 1
   rect:
     serializedVersion: 2
     x: 292
@@ -82,21 +96,6 @@ MonoBehaviour:
   - 945503c8-b53f-4ae5-8868-ba336728a62c
   - efa4a4e8-97e6-4d6e-b36d-9b3608e8ef17
   - 0896a050-e7e7-4b40-84c8-d229bb5d25c5
-  onEnterActions:
-  - 
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: Has Quest
-        parameters:
-        - Get ready for school
-        negate: 0
-    - or:
-      - predicate: Quest Completed
-        parameters:
-        - Get ready for school
-        negate: 1
 --- !u!114 &-8406459316497994253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +110,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: How can I equip an item?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1072
@@ -119,10 +122,6 @@ MonoBehaviour:
     height: 100
   children:
   - 71230a7f-3d82-459c-83eb-788290f788ea
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-8235594596994276940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: What time is it?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 486
@@ -145,10 +148,6 @@ MonoBehaviour:
     height: 100
   children:
   - 6c4aa45a-92d8-4b20-8ebd-108defdc5c33
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-7457267750612790282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +162,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Why aren't you ready yet? Today's the Trial of Ascendancy, remember?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 2
+        parameters:
+        - Get ready for school
+        negate: 1
   rect:
     serializedVersion: 2
     x: 231
@@ -172,15 +180,6 @@ MonoBehaviour:
   children:
   - f1643410-b502-4c3d-ae04-72b00a957a30
   - c238a29c-d416-449a-98da-e652cb1e221d
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: Has Quest
-        parameters:
-        - Get ready for school
-        negate: 1
 --- !u!114 &-6544942237970090951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +195,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Open your inventory , then drag it on the corresponding slot inside the Equipment
     Menu.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1310
@@ -204,10 +207,6 @@ MonoBehaviour:
     height: 100
   children:
   - ffaef326-4f94-479f-b7f7-5a09728ba222
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-5792317824556502089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +221,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Allright, just hurry up will ya?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2310
@@ -229,10 +232,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-5504698596483709772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +246,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: It's already 6:00 am have you noticed?...
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 729
@@ -255,10 +258,6 @@ MonoBehaviour:
     height: 100
   children:
   - 4570ffe5-6e7b-4f62-817a-da93a4579e31
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-5487025910696531512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,18 +272,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Can I go back to sleep?
-  rect:
-    serializedVersion: 2
-    x: 1173
-    y: 174
-    width: 200
-    height: 100
-  children:
-  - d6496fd8-8ab8-43f7-a463-3c9db6f564f1
   onEnterActions: []
   onExitActions: []
   condition:
     and: []
+  rect:
+    serializedVersion: 2
+    x: 1192
+    y: 177
+    width: 200
+    height: 100
+  children:
+  - d6496fd8-8ab8-43f7-a463-3c9db6f564f1
 --- !u!114 &-4584296890297801691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +298,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: What's the matter?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 829
@@ -308,10 +311,6 @@ MonoBehaviour:
   children:
   - 1996594b-8aeb-4437-9b08-2973eab58e9b
   - 98b1ac2c-4421-4f61-b09c-37cf0c7eed08
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-4368513923349152820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +325,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: You really wind me up with how late you always are, you know that?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 842
@@ -334,10 +337,6 @@ MonoBehaviour:
     height: 100
   children:
   - ed36e8d4-f5d9-4586-a7a6-93658e9a6763
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-2000186034894819487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +351,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Open your quest list in the pause menu, all the information you need is there.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1580
@@ -360,10 +363,6 @@ MonoBehaviour:
     height: 100
   children:
   - ffaef326-4f94-479f-b7f7-5a09728ba222
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-1753370879502508445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +377,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Come on now, hurry up.
+  onEnterActions: []
+  onExitActions:
+  - action: 1
+    parameters:
+    - Get ready for school
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2921
@@ -385,10 +391,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &-1181234796316024668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +406,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: If you keep this up, you'll always be a slacker, while I'll be the greatest
     sorcerer in the entire world!.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1409
@@ -413,10 +419,6 @@ MonoBehaviour:
   children:
   - bc69c2b2-d241-4031-a817-f58b8637ff71
   - 3691fc0e-882c-43af-8f6c-191bf90a1297
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +466,6 @@ MonoBehaviour:
   - {fileID: 7598167006141352856}
   - {fileID: 3900739097360489369}
   - {fileID: -1753370879502508445}
-  newNodeOffset: {x: 250, y: 0}
 --- !u!114 &127578806037566871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +480,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Never mind.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 608
@@ -487,10 +492,6 @@ MonoBehaviour:
     height: 100
   children:
   - c31b46c6-1a47-4f09-849f-232143d58d5b
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &685119828247223994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,6 +506,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Hey!
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: -1
@@ -515,10 +520,6 @@ MonoBehaviour:
   - ebb64231-9f87-404a-8ad7-a87f0511270b
   - c216a5e5-f049-4e5b-9155-9ee1988ffba6
   - 251f21d0-234f-4d13-89cd-6ef8ce7dc1ca
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &775348625166615439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,6 +534,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Come on, I'll see you there.
+  onEnterActions:
+  - action: 0
+    parameters: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 3
+        parameters:
+        - Get ready for school
+        negate: 0
   rect:
     serializedVersion: 2
     x: 292
@@ -540,16 +552,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions:
-  - 
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: Quest Completed
-        parameters:
-        - Get ready for school
-        negate: 0
 --- !u!114 &1115469800802736882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,6 +566,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: THIS IS UNACCEPTABLE!
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 973
@@ -573,10 +579,6 @@ MonoBehaviour:
   children:
   - 2edef87a-46b6-46b1-ab00-ea43e8932c58
   - a9b10dcd-e026-4f08-b863-29dd997ff835
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &2388606090216362721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -591,6 +593,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: No.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2046
@@ -599,10 +605,6 @@ MonoBehaviour:
     height: 100
   children:
   - e31f6e6c-1a2a-402e-bee9-d8a61021feb9
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &2769343169969370336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,18 +619,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Really?...
-  rect:
-    serializedVersion: 2
-    x: 1176
-    y: 16
-    width: 200
-    height: 100
-  children:
-  - d6496fd8-8ab8-43f7-a463-3c9db6f564f1
   onEnterActions: []
   onExitActions: []
   condition:
     and: []
+  rect:
+    serializedVersion: 2
+    x: 1195
+    y: 15
+    width: 200
+    height: 100
+  children:
+  - d6496fd8-8ab8-43f7-a463-3c9db6f564f1
 --- !u!114 &2878812986551623704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +645,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: What are you doing here?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 478
@@ -651,10 +657,6 @@ MonoBehaviour:
     height: 100
   children:
   - 6c4aa45a-92d8-4b20-8ebd-108defdc5c33
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &3157317249181945973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +671,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: I need some help.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and:
+    - or:
+      - predicate: 4
+        parameters:
+        - Get ready for school
+        - a
+        negate: 1
   rect:
     serializedVersion: 2
     x: 548
@@ -677,16 +689,6 @@ MonoBehaviour:
     height: 100
   children:
   - cd8fb3bb-c2fa-464a-94fd-5a9d3df2ae6b
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and:
-    - or:
-      - predicate: Objective Completed
-        parameters:
-        - Get ready for school
-        - a
-        negate: 1
 --- !u!114 &3275110649329462556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,6 +703,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: How can i open the door?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1081
@@ -709,10 +715,6 @@ MonoBehaviour:
     height: 100
   children:
   - 7e82d1cd-5377-4818-b60a-dd2ace72f1aa
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &3814848061238059683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +730,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Anyway, get a move on and get ready! I'll wait for you. Master Stormcaller
     must be expecting us.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2172
@@ -736,11 +742,6 @@ MonoBehaviour:
     height: 100
   children:
   - bd58e5ac-ae81-407b-8d13-3a707b7da15a
-  onEnterActions: []
-  onExitActions:
-  - Give Quest
-  condition:
-    and: []
 --- !u!114 &3900739097360489369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,19 +757,22 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: "Grab some egg toast\u2014it's my killer recipe! My mom passed it down to
     me."
+  onEnterActions: []
+  onExitActions:
+  - action: 0
+    parameters:
+    - 19f44445-9d74-4ad0-9896-429d23c7057a
+    - 1
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2672
-    y: 75
+    y: 74
     width: 200
     height: 100
   children:
   - 058930d3-756b-4cf9-991e-fd2532ced1e6
-  onEnterActions: []
-  onExitActions:
-  - Give Item
-  condition:
-    and: []
 --- !u!114 &4211042363250803256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,6 +787,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Alright...
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1644
@@ -791,10 +799,6 @@ MonoBehaviour:
     height: 100
   children:
   - ccf89f7a-9008-41a3-b883-2ce247cd7eb7
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &4903594466894849504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,6 +814,10 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: You look absolutely awful, by the way. Master Storm Caller can't be seen
     in such a state!
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2447
@@ -818,11 +826,6 @@ MonoBehaviour:
     height: 100
   children:
   - 3af81229-a85b-4d9c-8414-16a91c32afe3
-  onEnterActions: []
-  onExitActions:
-  - 
-  condition:
-    and: []
 --- !u!114 &5406846661044137608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -837,6 +840,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Not that I care anyways...
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1651
@@ -845,10 +852,6 @@ MonoBehaviour:
     height: 100
   children:
   - ca9b9ce7-0767-41fa-adae-3b253b3ba8c6
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &7598167006141352856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,18 +866,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: YOU SILLY LITTLE...
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
-    x: 1901
+    x: 1928
     y: 158
     width: 200
     height: 100
   children:
   - ccf89f7a-9008-41a3-b883-2ce247cd7eb7
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &7668021850460663869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,6 +892,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
   text: Yeah.
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 2040
@@ -897,10 +904,6 @@ MonoBehaviour:
     height: 100
   children:
   - cd8fb3bb-c2fa-464a-94fd-5a9d3df2ae6b
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &7871814939425428940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +918,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Anything else?
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1798
@@ -924,10 +931,6 @@ MonoBehaviour:
   children:
   - 25c74c15-bbae-4c9b-b975-f985853c026e
   - e30fa2ec-957b-4765-b385-a132db96adca
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
 --- !u!114 &8498945787758721461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +945,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Anyway, I'll catch you at the academy.
+  onEnterActions: []
+  onExitActions:
+  - action: 2
+    parameters:
+    - Get ready for school
+    - b
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 1106
@@ -949,11 +960,6 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions:
-  - Complete Objective
-  condition:
-    and: []
 --- !u!114 &9042642283511145620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +974,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: We don't have the entire morning , hurry up!
+  onEnterActions: []
+  onExitActions: []
+  condition:
+    and: []
   rect:
     serializedVersion: 2
     x: 847
@@ -975,7 +985,3 @@ MonoBehaviour:
     width: 200
     height: 100
   children: []
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []

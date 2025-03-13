@@ -13,7 +13,6 @@ namespace RPG.Dialogue
         DialogueNode currentNode = null;
         AIConversant currentConversant = null;
         bool isChoosing = false;
-
         public event Action onConversationUpdated;
 
         public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
@@ -47,9 +46,12 @@ namespace RPG.Dialogue
 
         public string GetText()
         {
-            if(currentNode == null) return "";
+            if(currentNode != null) 
+            {
+                return currentNode.GetText();
+            }
 
-            return currentNode.GetText();
+            return "";
         }
 
         public IEnumerable<DialogueNode> GetChoices()
@@ -115,7 +117,7 @@ namespace RPG.Dialogue
             }
         }
 
-        private IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
+        IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
         {
             foreach(var node in inputNode)
             {
@@ -126,40 +128,30 @@ namespace RPG.Dialogue
             }
         }
 
-        private IEnumerable<IPredicateEvaluator> GetEvaluators()
+        IEnumerable<IPredicateEvaluator> GetEvaluators()
         {
             return GetComponents<IPredicateEvaluator>();
         }
 
-        private void TriggerEnterAction()
+        void TriggerEnterAction()
         {
             if(currentNode != null)
             {
-                foreach(string action in currentNode.GetOnEnterActions())
+                foreach(var action in currentNode.GetOnEnterActions())
                 {
-                    TriggerAction(action);
+                    action.PerformAction(currentConversant.GetComponents<IActionPerfomer>());
                 }
             }
         }
 
-        private void TriggerExitAction()
+        void TriggerExitAction()
         {
             if(currentNode != null)
             {
-                foreach(string action in currentNode.GetOnExitActions())
+                foreach(var action in currentNode.GetOnExitActions())
                 {
-                    TriggerAction(action);
+                    action.PerformAction(currentConversant.GetComponents<IActionPerfomer>());
                 }
-            }
-        }
-
-        private void TriggerAction(string action)
-        {
-            if(action == "") return;
-
-            foreach(DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
-            {
-                trigger.Trigger(currentConversant.GetDialogueName(), action);
             }
         }
     }

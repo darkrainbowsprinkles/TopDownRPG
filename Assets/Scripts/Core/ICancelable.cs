@@ -1,6 +1,6 @@
 namespace RPG.Core
 {
-    public interface IAction
+    public interface ICancelable
     {
         void Cancel();
     }

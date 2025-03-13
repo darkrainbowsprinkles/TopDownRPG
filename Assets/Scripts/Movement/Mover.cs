@@ -6,7 +6,7 @@ using RPG.Attributes;
 
 namespace RPG.Movement
 {
-    public class Mover : MonoBehaviour, IAction, ISaveable
+    public class Mover : MonoBehaviour, ICancelable, ISaveable
     {
         [SerializeField] float maxSpeed = 6f;
         [SerializeField] float maxNavPathLength = 40f;

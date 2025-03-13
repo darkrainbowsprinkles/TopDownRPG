@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using GameDevTV.Utils;
 using UnityEditor;
@@ -9,19 +8,42 @@ namespace RPG.Dialogue
     public class DialogueNode : ScriptableObject
     {
         [SerializeField] bool isPlayerSpeaking = false;
-        [SerializeField][TextArea] string text;
-        [SerializeField] Rect rect = new Rect(0, 0, 200, 100);
-        [SerializeField] List <string> children = new List<string>();
-        [SerializeField] string[] onEnterActions;
-        [SerializeField] string[] onExitActions;
+        [SerializeField, TextArea] string text;
+        [SerializeField] ActionConfig[] onEnterActions;
+        [SerializeField] ActionConfig[] onExitActions;
         [SerializeField] Condition condition;
+        [SerializeField, HideInInspector] Rect rect = new(0, 0, 200, 100);
+        [SerializeField, HideInInspector] List <string> children = new();
 
-        public Rect GetRect() => rect;
-        public string GetText() => text;
-        public List<string> GetChildren() => children;
-        public bool IsPlayerSpeaking() => isPlayerSpeaking;
-        public string[] GetOnEnterActions() => onEnterActions;
-        public string[] GetOnExitActions() => onExitActions;
+        public Rect GetRect()
+        {
+            return rect;
+        }
+
+        public string GetText()
+        {
+            return text;
+        }
+
+        public List<string> GetChildren()
+        {
+            return children;
+        }
+
+        public bool IsPlayerSpeaking()
+        {
+            return isPlayerSpeaking;
+        }
+
+        public ActionConfig[] GetOnEnterActions()
+        {
+            return onEnterActions;
+        }
+
+        public ActionConfig[] GetOnExitActions()
+        {
+            return onExitActions;
+        }
 
         public bool CheckCondition(IEnumerable<IPredicateEvaluator> evaluators)
         {
@@ -38,11 +60,12 @@ namespace RPG.Dialogue
 
         public void SetText(string newText)
         {
-            if(newText == text) return;
-
-            Undo.RecordObject(this, "Updated Dialogue Text");
-            text = newText;
-            EditorUtility.SetDirty(this);
+            if(newText != text) 
+            {
+                Undo.RecordObject(this, "Updated Dialogue Text");
+                text = newText;
+                EditorUtility.SetDirty(this);
+            }
         }
 
         public void AddChild(string childID)

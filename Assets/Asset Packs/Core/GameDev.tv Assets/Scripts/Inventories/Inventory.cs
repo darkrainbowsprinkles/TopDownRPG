@@ -244,18 +244,6 @@ namespace GameDevTV.Inventories
             return i;
         }
 
-        // Called in Unity Events
-        public void Add(string itemID)
-        {
-            AddToFirstEmptySlot(InventoryItem.GetFromID(itemID), 1);
-        }
-
-        public void Remove(string itemID)
-        {
-            int slot = FindSlot(InventoryItem.GetFromID(itemID));
-            RemoveFromSlot(slot, GetNumberInSlot(slot));
-        }
-
         // PRIVATE
 
         private void Awake()

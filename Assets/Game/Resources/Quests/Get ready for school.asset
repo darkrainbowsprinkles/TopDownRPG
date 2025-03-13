@@ -22,17 +22,17 @@ MonoBehaviour:
     completionCondition:
       and:
       - or:
-        - predicate: Has Item Equipped
+        - predicate: 1
           parameters:
           - cfe4bfd5-1eae-4fa9-8d02-b24234cffc54
           negate: 0
       - or:
-        - predicate: Has Item Equipped
+        - predicate: 1
           parameters:
           - 42144055-cae2-4bdc-bd40-b1c76b615158
           negate: 0
       - or:
-        - predicate: Has Item Equipped
+        - predicate: 1
           parameters:
           - 1756ddbe-b0d0-4e8c-a3c2-8a1129734554
           negate: 0

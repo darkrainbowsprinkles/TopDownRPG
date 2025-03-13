@@ -150,17 +150,17 @@ PrefabInstance:
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
       propertyPath: triggersSetup.Array.data[0].actionID
-      value: Give Quest
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
       propertyPath: triggersSetup.Array.data[1].actionID
-      value: Complete Objective
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
       propertyPath: triggersSetup.Array.data[2].actionID
-      value: Give Item
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
@@ -196,12 +196,12 @@ PrefabInstance:
         type: 3}
       propertyPath: triggersSetup.Array.data[0].trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 62566066}
+      objectReference: {fileID: 0}
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
       propertyPath: triggersSetup.Array.data[1].trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 62566084}
+      objectReference: {fileID: 0}
     - target: {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8,
         type: 3}
       propertyPath: triggersSetup.Array.data[2].trigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -344,7 +344,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f984da8c5f9c7784ba92e4b77e112f37,
         type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3313332936994580464, guid: a0832c77d6b0a7348badc74be2c2aeb8, type: 3}
+    - {fileID: 4242496033854962770, guid: a0832c77d6b0a7348badc74be2c2aeb8, type: 3}
+    - {fileID: 8442931804739143670, guid: a0832c77d6b0a7348badc74be2c2aeb8, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a0832c77d6b0a7348badc74be2c2aeb8, type: 3}
 --- !u!4 &38673617 stripped
@@ -424,34 +427,22 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 14063829}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &62566066 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8442931804739143670, guid: a0832c77d6b0a7348badc74be2c2aeb8,
-    type: 3}
-  m_PrefabInstance: {fileID: 14063829}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62566065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e8cd7b13c9e6a4c81866958133aa8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &62566077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6101557462394913716, guid: a0832c77d6b0a7348badc74be2c2aeb8,
     type: 3}
   m_PrefabInstance: {fileID: 14063829}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &62566084 stripped
+--- !u!114 &62566096
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4242496033854962770, guid: a0832c77d6b0a7348badc74be2c2aeb8,
-    type: 3}
-  m_PrefabInstance: {fileID: 14063829}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62566065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32c0f1a1d4aa79a469f2b4b64748a3e7, type: 3}
+  m_Script: {fileID: 11500000, guid: be58d40d66b60e446906d72501cdfc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &67390183 stripped
@@ -1950,7 +1941,7 @@ MonoBehaviour:
     condition:
       and:
       - or:
-        - predicate: Quest Completed
+        - predicate: 2
           parameters:
           - Get ready for school
           negate: 1
@@ -7928,7 +7919,7 @@ PrefabInstance:
     - target: {fileID: 2575496029477307821, guid: c201a74667320f54985f9317a87dd2d2,
         type: 3}
       propertyPath: unlockCondition.and.Array.data[0].or.Array.data[0].predicate
-      value: Quest Completed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2575496029477307821, guid: c201a74667320f54985f9317a87dd2d2,
         type: 3}
