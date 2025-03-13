@@ -9,9 +9,9 @@ namespace RPG.Dialogue
     public class PlayerConversant : MonoBehaviour
     {
         [SerializeField] string playerName = "";
-        Dialogue currentDialogue = null;
-        DialogueNode currentNode = null;
-        AIConversant currentConversant = null;
+        Dialogue currentDialogue;
+        DialogueNode currentNode;
+        AIConversant currentConversant;
         bool isChoosing = false;
         public event Action onConversationUpdated;
 
@@ -19,7 +19,7 @@ namespace RPG.Dialogue
         {
             currentConversant = newConversant;
             currentDialogue = newDialogue;
-            currentNode = currentDialogue.GetRootNode();
+            currentNode = GetRootNode();
             TriggerEnterAction();
             onConversationUpdated?.Invoke();
         }
@@ -117,20 +117,25 @@ namespace RPG.Dialogue
             }
         }
 
+        DialogueNode GetRootNode()
+        {
+            foreach(var rootNode in FilterOnCondition(currentDialogue.GetRootNodes()))
+            {
+                return rootNode;
+            }
+
+            return null;
+        }
+
         IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
         {
             foreach(var node in inputNode)
             {
-                if(node.CheckCondition(GetEvaluators()))
+                if(node.CheckCondition(GetComponents<IPredicateEvaluator>()))
                 {
                     yield return node;
                 }
             }
-        }
-
-        IEnumerable<IPredicateEvaluator> GetEvaluators()
-        {
-            return GetComponents<IPredicateEvaluator>();
         }
 
         void TriggerEnterAction()

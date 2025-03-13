@@ -5,7 +5,7 @@ namespace RPG.Quests
     public class QuestStatus
     {
         Quest quest;
-        List<string> completedObjectives = new List<string>();
+        List<string> completedObjectives = new();
 
 
         [System.Serializable]
@@ -23,9 +23,8 @@ namespace RPG.Quests
         public QuestStatus(object objectState)
         {
             QuestStatusRecord state = objectState as QuestStatusRecord;
-
-            this.quest = Quest.GetByName(state.questName);
-            this.completedObjectives = state.completedObjectives;
+            quest = Quest.GetByName(state.questName);
+            completedObjectives = state.completedObjectives;
         }
 
         public Quest GetQuest()
@@ -69,7 +68,6 @@ namespace RPG.Quests
             QuestStatusRecord state = new QuestStatusRecord();
             state.questName = quest.name;
             state.completedObjectives = completedObjectives;
-
             return state;
         }
     }

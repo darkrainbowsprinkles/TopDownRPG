@@ -9,18 +9,18 @@ namespace RPG.Quests
 {
     public class QuestList : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
-        List<QuestStatus> statuses = new List<QuestStatus>();
+        List<QuestStatus> statuses = new();
         QuestType filter = QuestType.None;
         public event Action onListUpdated;
 
         public void AddQuest(Quest quest)
         {
-            if(HasQuest(quest)) return;
-
-            QuestStatus newStatus = new QuestStatus(quest);
-
-            statuses.Add(newStatus);
-            onListUpdated?.Invoke();
+            if(!HasQuest(quest)) 
+            {
+                QuestStatus newStatus = new QuestStatus(quest);
+                statuses.Add(newStatus);
+                onListUpdated?.Invoke();
+            }
         }
 
         public void SelectFilter(QuestType filter)
@@ -62,22 +62,33 @@ namespace RPG.Quests
             }
         }
 
-        private void Update()
+        void Update()
         {
             CompleteObjectivesByPredicates();
         }
 
-        private void CompleteObjectivesByPredicates()
+        void CompleteObjectivesByPredicates()
         {
             foreach(QuestStatus status in statuses)
             {
-                if(status.IsComplete()) continue;
+                if(status.IsComplete()) 
+                {
+                    continue;
+                }
 
                 Quest quest = status.GetQuest();
+
                 foreach(var objective in quest.GetObjectives())
                 {
-                    if(status.IsObjectiveComplete(objective.reference)) continue;
-                    if(!objective.usesCondition) continue;
+                    if(status.IsObjectiveComplete(objective.reference))
+                    {
+                        continue;
+                    }
+
+                    if(!objective.usesCondition) 
+                    {
+                        continue;
+                    }
 
                     if(objective.completionCondition.Check(GetComponents<IPredicateEvaluator>()))
                     {
@@ -87,7 +98,7 @@ namespace RPG.Quests
             }
         }
 
-        private QuestStatus GetQuestStatus(Quest quest)
+        QuestStatus GetQuestStatus(Quest quest)
         {
             foreach(QuestStatus status in statuses)
             {
@@ -100,7 +111,7 @@ namespace RPG.Quests
             return null;
         }
 
-        private void GiveReward(Quest quest)
+        void GiveReward(Quest quest)
         {
             foreach(var reward in quest.GetRewards())
             {        
@@ -113,14 +124,14 @@ namespace RPG.Quests
             }
         }
 
-        private bool HasQuest(Quest quest)
+        bool HasQuest(Quest quest)
         {
             return GetQuestStatus(quest) != null;
         }
 
         object ISaveable.CaptureState()
         {
-            List<object> state = new List<object>();
+            List<object> state = new();
 
             foreach(QuestStatus status in statuses)
             {
@@ -134,7 +145,10 @@ namespace RPG.Quests
         {
             List<object> stateList = state as List<object>;
 
-            if(stateList == null) return;
+            if(stateList == null) 
+            {
+                return;
+            }
 
             statuses.Clear();
 
@@ -148,7 +162,10 @@ namespace RPG.Quests
 
         bool? IPredicateEvaluator.Evaluate(EPredicate predicate, string[] parameters)
         {
-            if(parameters.Length == 0) return null;
+            if(parameters.Length == 0) 
+            {
+                return null;
+            }
 
             Quest quest = Quest.GetByName(parameters[0]);
             

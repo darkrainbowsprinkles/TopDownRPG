@@ -17,18 +17,36 @@ namespace RPG.Dialogue
             return nodes;
         }
 
-        public DialogueNode GetRootNode()
+        public IEnumerable<DialogueNode> GetRootNodes()
         {
-            return nodes[0];
+            foreach(DialogueNode node in GetAllNodes())
+            {
+                bool isChild = false;
+
+                foreach(DialogueNode lookupNode in GetAllNodes())
+                {
+                    if(lookupNode.GetChildren().Contains(node.name))
+                    {
+                        isChild = true;
+                        break;
+                    }
+                }
+
+                if(!isChild) 
+                {
+                    yield return node;
+                }
+            }
         }
 
         public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parentNode)
         {
             foreach(string childID in parentNode.GetChildren())
             {
-                if(!nodeLookup.ContainsKey(childID)) continue;
-                
-                yield return nodeLookup[childID];
+                if(nodeLookup.ContainsKey(childID)) 
+                {
+                    yield return nodeLookup[childID];
+                }
             }
         }
 
@@ -58,10 +76,8 @@ namespace RPG.Dialogue
         public void CreateNode(DialogueNode parent)
         {
             DialogueNode newNode = MakeNode(parent);
-
             Undo.RegisterCreatedObjectUndo(newNode, "Created Dialogue Node");
             Undo.RecordObject(this, "Added Dialogue Node");
-
             AddNode(newNode);
         }
 
@@ -82,8 +98,10 @@ namespace RPG.Dialogue
 
             foreach(DialogueNode node in GetAllNodes())
             {
-                if(node == null) continue;
-                nodeLookup[node.name] = node;
+                if(node != null)
+                {
+                    nodeLookup[node.name] = node;
+                }
             }
         }
 
@@ -100,7 +118,7 @@ namespace RPG.Dialogue
 
         void CleanDanglingChildren(DialogueNode nodeToDelete)
         {
-            foreach (DialogueNode node in GetAllNodes())
+            foreach(DialogueNode node in GetAllNodes())
             {
                 node.RemoveChild(nodeToDelete.name);
             }
@@ -111,7 +129,7 @@ namespace RPG.Dialogue
             DialogueNode newNode = CreateInstance<DialogueNode>();
             newNode.name = Guid.NewGuid().ToString();
 
-            if (parent != null)
+            if(parent != null)
             {
                 parent.AddChild(newNode.name);
                 newNode.SetPlayerSpeaking(!parent.IsPlayerSpeaking());

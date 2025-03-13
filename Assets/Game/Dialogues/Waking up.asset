@@ -52,8 +52,8 @@ MonoBehaviour:
         negate: 0
   rect:
     serializedVersion: 2
-    x: 576
-    y: 729
+    x: 491
+    y: 561
     width: 200
     height: 100
   children:
@@ -88,8 +88,8 @@ MonoBehaviour:
         negate: 1
   rect:
     serializedVersion: 2
-    x: 292
-    y: 521
+    x: 86
+    y: 425
     width: 200
     height: 100
   children:
@@ -173,8 +173,8 @@ MonoBehaviour:
         negate: 1
   rect:
     serializedVersion: 2
-    x: 231
-    y: 122
+    x: 82
+    y: 120
     width: 200
     height: 100
   children:
@@ -304,8 +304,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 829
-    y: 529
+    x: 760
+    y: 481
     width: 200
     height: 100
   children:
@@ -331,8 +331,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 842
-    y: 730
+    x: 755
+    y: 625
     width: 200
     height: 100
   children:
@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Name: Waking up
   m_EditorClassIdentifier: 
   nodes:
-  - {fileID: 685119828247223994}
   - {fileID: 2878812986551623704}
   - {fileID: -8235594596994276940}
   - {fileID: -5504698596483709772}
@@ -479,47 +478,19 @@ MonoBehaviour:
   m_Name: 945503c8-b53f-4ae5-8868-ba336728a62c
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: Never mind.
+  text: Not yet.
   onEnterActions: []
   onExitActions: []
   condition:
     and: []
   rect:
     serializedVersion: 2
-    x: 608
-    y: 326
+    x: 488
+    y: 304
     width: 200
     height: 100
   children:
   - c31b46c6-1a47-4f09-849f-232143d58d5b
---- !u!114 &685119828247223994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fefe9c61feaaacd4a84ba7d3e9bfa033, type: 3}
-  m_Name: 3abd8125-bd47-4ba5-bdb0-05c33f41ae78
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: Hey!
-  onEnterActions: []
-  onExitActions: []
-  condition:
-    and: []
-  rect:
-    serializedVersion: 2
-    x: -1
-    y: 522
-    width: 200
-    height: 100
-  children:
-  - ebb64231-9f87-404a-8ad7-a87f0511270b
-  - c216a5e5-f049-4e5b-9155-9ee1988ffba6
-  - 251f21d0-234f-4d13-89cd-6ef8ce7dc1ca
 --- !u!114 &775348625166615439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,9 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
   text: Come on, I'll see you there.
-  onEnterActions:
-  - action: 0
-    parameters: []
+  onEnterActions: []
   onExitActions: []
   condition:
     and:
@@ -547,8 +516,8 @@ MonoBehaviour:
         negate: 0
   rect:
     serializedVersion: 2
-    x: 292
-    y: 902
+    x: 90
+    y: 685
     width: 200
     height: 100
   children: []
@@ -599,8 +568,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 2046
-    y: 580
+    x: 2041
+    y: 603
     width: 200
     height: 100
   children:
@@ -683,8 +652,8 @@ MonoBehaviour:
         negate: 1
   rect:
     serializedVersion: 2
-    x: 548
-    y: 524
+    x: 488
+    y: 430
     width: 200
     height: 100
   children:
@@ -898,8 +867,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 2040
-    y: 413
+    x: 2061
+    y: 454
     width: 200
     height: 100
   children:
@@ -955,8 +924,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 1106
-    y: 729
+    x: 1019
+    y: 715
     width: 200
     height: 100
   children: []
@@ -980,8 +949,8 @@ MonoBehaviour:
     and: []
   rect:
     serializedVersion: 2
-    x: 847
-    y: 319
+    x: 907
+    y: 331
     width: 200
     height: 100
   children: []

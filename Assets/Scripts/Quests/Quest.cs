@@ -10,8 +10,8 @@ namespace RPG.Quests
     {
         [SerializeField] QuestType questType;
         [SerializeField] [TextArea] string description = "";
-        [SerializeField] List<Objective> objectives = new List<Objective>();
-        [SerializeField] List<Reward> rewards = new List<Reward>();
+        [SerializeField] List<Objective> objectives = new();
+        [SerializeField] List<Reward> rewards = new();
 
         [System.Serializable]
         public class Objective
@@ -29,16 +29,6 @@ namespace RPG.Quests
             public InventoryItem item;
         }
 
-        public QuestType GetQuestType()
-        {
-            return questType;
-        }
-
-        public string GetDescription()
-        {
-            return description;
-        }
-
         public static Quest GetByName(string questName)
         {
             foreach(Quest quest in Resources.LoadAll<Quest>(""))
@@ -50,6 +40,16 @@ namespace RPG.Quests
             }
 
             return null;
+        }
+
+        public QuestType GetQuestType()
+        {
+            return questType;
+        }
+
+        public string GetDescription()
+        {
+            return description;
         }
 
         public string GetTitle()
