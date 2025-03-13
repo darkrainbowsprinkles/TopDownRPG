@@ -228,7 +228,8 @@ MonoBehaviour:
     energy around you, and receive my gift.
   onEnterActions: []
   onExitActions:
-  - Show Traits
+  - action: 3
+    parameters: []
   condition:
     and:
     - or:

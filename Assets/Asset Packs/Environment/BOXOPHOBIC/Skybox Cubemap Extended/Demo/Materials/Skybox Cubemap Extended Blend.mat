@@ -90,7 +90,7 @@ Material:
     - _BumpScale: 1
     - _CUBEMAPP: 1
     - _CubemapPosition: 0
-    - _CubemapTransition: 0.79882354
+    - _CubemapTransition: 0.5366343
     - _Cubemapp: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1

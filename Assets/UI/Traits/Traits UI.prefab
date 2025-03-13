@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commitButton: {fileID: 2737144891562482730}
   unassignedPointsText: {fileID: 1290973365457443727}
+  traitsContainer: {fileID: 5001146443282354443}
 --- !u!1001 &68777364132631825
 PrefabInstance:
   m_ObjectHideFlags: 0

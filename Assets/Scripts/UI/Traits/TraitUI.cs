@@ -9,22 +9,20 @@ namespace RPG.UI.Traits
     {
         [SerializeField] Button commitButton;
         [SerializeField] TextMeshProUGUI unassignedPointsText;
+        [SerializeField] Transform traitsContainer;
+        TraitStore playerTraitStore;
 
-        TraitStore playerTraitStore = null;
-
-        private void Start()
+        void Start()
         {
-            playerTraitStore = GameObject.FindWithTag("Player").GetComponent<TraitStore>();
-
-            playerTraitStore.storeUpdated += UpdateUI;
-
+            playerTraitStore = TraitStore.GetPlayerTraitStore();
+            playerTraitStore.storeUpdated += RefreshUI;
             commitButton.onClick.AddListener(playerTraitStore.Commit);
-
-            UpdateUI();
+            RefreshUI();
         }
 
-        private void UpdateUI()
+        void RefreshUI()
         {
+            traitsContainer.gameObject.SetActive(playerTraitStore.ActiveEnhancer());
             commitButton.interactable = playerTraitStore.GetTotalStagedPoints() > 0;
             unassignedPointsText.text = $"{playerTraitStore.GetUnassignedPoints()}";
         }

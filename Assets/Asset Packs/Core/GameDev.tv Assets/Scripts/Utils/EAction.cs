@@ -5,5 +5,6 @@ namespace GameDevTV.Utils
         GiveItem,
         GiveQuest,
         CompleteObjetive,
+        SetTraitEnhancer,
     }
 }

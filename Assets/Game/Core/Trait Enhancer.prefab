@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4028700793771898976}
   - component: {fileID: 7157265393881294754}
   - component: {fileID: 6736019542053041901}
-  - component: {fileID: 2290365653978529728}
+  - component: {fileID: 6160596588792492741}
   m_Layer: 0
   m_Name: Trait Enhancer
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 37bba2c4c1f59c243a81f1abd65ee3c7, type: 2}
   conversantName: Unknown voice
---- !u!114 &2290365653978529728
+--- !u!114 &6160596588792492741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,10 +72,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7006855455617128423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf15ef3cc5905dc47bfbf210153dccdf, type: 3}
+  m_Script: {fileID: 11500000, guid: d2a9f9f4028b1d94d9f66d4defed4285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggersSetup: []
 --- !u!1001 &1350323105538714591
 PrefabInstance:
   m_ObjectHideFlags: 0

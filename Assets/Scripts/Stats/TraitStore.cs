@@ -13,8 +13,8 @@ namespace RPG.Stats
         Dictionary<Trait, int> stagedPoints = new Dictionary<Trait, int>();
         Dictionary<Stat, Dictionary<Trait, float>> additiveBonusCache;
         Dictionary<Stat, Dictionary<Trait, float>> percentageBonusCache;
+        bool activeEnhancer = false;
         public event Action storeUpdated;
-
 
         [System.Serializable]
         class TraitBonus
@@ -23,6 +23,16 @@ namespace RPG.Stats
             public Stat stat;
             public float additiveBonusPerPoint = 0;
             public float percentageBonusPerPoint = 0;
+        }
+
+        public static TraitStore GetPlayerTraitStore()
+        {
+            return GameObject.FindWithTag("Player").GetComponent<TraitStore>();
+        }
+
+        public bool ActiveEnhancer()
+        {
+            return activeEnhancer;
         }
 
         public int GetUnassignedPoints()
@@ -69,18 +79,32 @@ namespace RPG.Stats
             return stagedPoints.ContainsKey(trait) ? stagedPoints[trait] : 0;
         }
 
+        public void SetActiveEnhancer(bool activeEnhancer)
+        {
+            this.activeEnhancer = activeEnhancer;
+            storeUpdated?.Invoke();
+        }
+
         public void AssignPoints(Trait trait, int points)
         {
-            if(!CanAsignPoints(trait, points)) return;
-
-            stagedPoints[trait] = GetStagedPoints(trait) + points;
-            storeUpdated?.Invoke();
+            if(CanAsignPoints(trait, points))
+            {
+                stagedPoints[trait] = GetStagedPoints(trait) + points;
+                storeUpdated?.Invoke();
+            }
         }
 
         public bool CanAsignPoints(Trait trait, int points)
         {
-            if(GetStagedPoints(trait) + points < 0) return false;
-            if(GetUnassignedPoints() < points) return false;
+            if(GetStagedPoints(trait) + points < 0) 
+            {
+                return false;
+            }
+
+            if(GetUnassignedPoints() < points) 
+            {
+                return false;
+            }
 
             return true;
         }
@@ -98,31 +122,7 @@ namespace RPG.Stats
 
         public int GetAssignablePoints()
         {
-            return (int) GetComponent<BaseStats>().GetStat(Stat.TotalTraitPoints);
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if(!additiveBonusCache.ContainsKey(stat)) yield break;
-
-            foreach(Trait trait in additiveBonusCache[stat].Keys)
-            {
-                float bonus = additiveBonusCache[stat][trait];
-
-                yield return bonus * GetPoints(trait);
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if(!percentageBonusCache.ContainsKey(stat)) yield break;
-
-            foreach(Trait trait in percentageBonusCache[stat].Keys)
-            {
-                float bonus = percentageBonusCache[stat][trait];
-
-                yield return bonus * GetPoints(trait);
-            }
+            return (int)GetComponent<BaseStats>().GetStat(Stat.TotalTraitPoints);
         }
 
         void Awake()
@@ -144,6 +144,36 @@ namespace RPG.Stats
 
                 additiveBonusCache[bonus.stat][bonus.trait] = bonus.additiveBonusPerPoint;
                 percentageBonusCache[bonus.stat][bonus.trait] = bonus.percentageBonusPerPoint;
+            }
+        }
+
+        IEnumerable<float> IModifierProvider.GetAdditiveModifiers(Stat stat)
+        {
+            if(!additiveBonusCache.ContainsKey(stat)) 
+            {
+                yield break;
+            }
+
+            foreach(Trait trait in additiveBonusCache[stat].Keys)
+            {
+                float bonus = additiveBonusCache[stat][trait];
+
+                yield return bonus * GetPoints(trait);
+            }
+        }
+
+        IEnumerable<float> IModifierProvider.GetPercentageModifiers(Stat stat)
+        {
+            if(!percentageBonusCache.ContainsKey(stat)) 
+            {
+                yield break;
+            }
+
+            foreach(Trait trait in percentageBonusCache[stat].Keys)
+            {
+                float bonus = percentageBonusCache[stat][trait];
+
+                yield return bonus * GetPoints(trait);
             }
         }
 

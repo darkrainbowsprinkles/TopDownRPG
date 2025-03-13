@@ -11,29 +11,25 @@ namespace RPG.UI.Traits
         [SerializeField] TextMeshProUGUI valueText;
         [SerializeField] Button minusButton;
         [SerializeField] Button plusButton;
-
-        TraitStore playerTraitStore = null;
-
-        private void Start()
-        {
-            playerTraitStore = GameObject.FindWithTag("Player").GetComponent<TraitStore>();
-
-            minusButton.onClick.AddListener(() => Allocate(-1));
-
-            plusButton.onClick.AddListener(() => Allocate(+1));
-        }
-
-        private void Update()
-        {
-            minusButton.interactable = playerTraitStore.CanAsignPoints(trait, -1);
-            plusButton.interactable = playerTraitStore.CanAsignPoints(trait, +1);
-
-            valueText.text = playerTraitStore.GetProposedPoints(trait).ToString();
-        }
+        TraitStore playerTraitStore;
 
         public void Allocate(int points)
         {
             playerTraitStore.AssignPoints(trait, points);
+        }
+        
+        void Start()
+        {
+            playerTraitStore = TraitStore.GetPlayerTraitStore();
+            minusButton.onClick.AddListener(() => Allocate(-1));
+            plusButton.onClick.AddListener(() => Allocate(+1));
+        }
+
+        void Update()
+        {
+            minusButton.interactable = playerTraitStore.CanAsignPoints(trait, -1);
+            plusButton.interactable = playerTraitStore.CanAsignPoints(trait, +1);
+            valueText.text = playerTraitStore.GetProposedPoints(trait).ToString();
         }
     }
 }
