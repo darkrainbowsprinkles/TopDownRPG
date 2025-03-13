@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace RPG.TimeManagement
 {   
+    // Optimization TO-DO
     public class Clock : MonoBehaviour, ISaveable, IAttributeProvider, IPredicateEvaluator
     {
         [SerializeField] float timeScale = 1;
@@ -57,17 +58,13 @@ namespace RPG.TimeManagement
             return currentTime;
         }
 
-        bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
+        // TO-DO: Clock condition optimization with events instead of predicates
+        bool? IPredicateEvaluator.Evaluate(EPredicate predicate, string[] parameters)
         {
-            switch(predicate)
-            {
-                case "Is Morning":
-                    return currentTime >= 6 && currentTime < 12;
-                case "Is Evening":
-                    return currentTime >= 12 && currentTime < 19;
-                case "Is Night":
-                    return currentTime >= 19 || currentTime < 6;
-            }
+            // switch(predicate)
+            // {
+
+            // }
 
             return null;
         }

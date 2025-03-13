@@ -9,13 +9,10 @@ namespace RPG.Stats
     public class TraitStore : MonoBehaviour, IModifierProvider, ISaveable, IPredicateEvaluator
     {
         [SerializeField] TraitBonus[] bonusConfig;
-        
         Dictionary<Trait, int> assignedPoints = new Dictionary<Trait, int>();
         Dictionary<Trait, int> stagedPoints = new Dictionary<Trait, int>();
-
         Dictionary<Stat, Dictionary<Trait, float>> additiveBonusCache;
         Dictionary<Stat, Dictionary<Trait, float>> percentageBonusCache;
-
         public event Action storeUpdated;
 
 
@@ -160,18 +157,18 @@ namespace RPG.Stats
             assignedPoints = new Dictionary<Trait, int>((Dictionary<Trait, int>)state);
         }
 
-        bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
+        bool? IPredicateEvaluator.Evaluate(EPredicate predicate, string[] parameters)
         {
             switch(predicate)
             {
-                case "MinimumTrait":
-                    if(Enum.TryParse<Trait>(parameters[0], out Trait trait))
+                case EPredicate.MinimumTrait:
+                    if(Enum.TryParse(parameters[0], out Trait trait))
                     {
-                        return GetPoints(trait) >= Int32.Parse(parameters[1]);
+                        return GetPoints(trait) >= int.Parse(parameters[1]);
                     } 
                     break;
 
-                case "HasTraitPoints":
+                case EPredicate.HasTraitPoints:
                     return GetUnassignedPoints() > 0;
             }
 

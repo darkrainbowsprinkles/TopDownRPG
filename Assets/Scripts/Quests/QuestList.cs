@@ -146,7 +146,7 @@ namespace RPG.Quests
             onListUpdated?.Invoke();
         }
 
-        bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
+        bool? IPredicateEvaluator.Evaluate(EPredicate predicate, string[] parameters)
         {
             if(parameters.Length == 0) return null;
 
@@ -156,11 +156,11 @@ namespace RPG.Quests
 
             switch(predicate)
             {
-                case "Has Quest":
+                case EPredicate.HasQuest:
 
                     return HasQuest(quest);
 
-                case "Quest Completed":
+                case EPredicate.CompletedQuest:
 
                     if(status != null)
                     {
@@ -169,7 +169,7 @@ namespace RPG.Quests
 
                     return false;
 
-                case "Objective Completed":       
+                case EPredicate.CompletedObjective:       
 
                     if(status != null)
                     {

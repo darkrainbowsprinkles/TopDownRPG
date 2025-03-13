@@ -340,11 +340,11 @@ namespace GameDevTV.Inventories
             }
         }
 
-        public bool? Evaluate(string predicate, string[] parameters)
+        public bool? Evaluate(EPredicate predicate, string[] parameters)
         {
             switch(predicate)
             {
-                case "Has Item":
+                case EPredicate.HasItem:
                     return HasItem(InventoryItem.GetFromID(parameters[0]));
             }
 

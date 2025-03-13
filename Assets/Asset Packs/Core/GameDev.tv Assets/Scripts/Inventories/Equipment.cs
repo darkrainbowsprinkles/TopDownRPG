@@ -146,9 +146,9 @@ namespace GameDevTV.Inventories
             equipmentUpdated?.Invoke();
         }
 
-        bool? IPredicateEvaluator.Evaluate(string predicate, string[] parameters)
+        bool? IPredicateEvaluator.Evaluate(EPredicate predicate, string[] parameters)
         {
-            if(predicate == "Has Item Equipped")
+            if(predicate == EPredicate.HasItemEquipped)
             {
                 foreach(var item in equippedItems.Values)
                 {
