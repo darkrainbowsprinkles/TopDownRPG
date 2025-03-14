@@ -12,11 +12,12 @@ namespace RPG.Inventories
     {
         [SerializeField] LootConfig[] loot;
         [SerializeField] UnityEvent onChestOpened;
-        Inventory playerInventory;
-        Boolean alreadyLooted = false;
+        bool looted = false;
+        RandomDropper dropper;
+        Animation openAnimation;
 
         [System.Serializable]
-        class LootConfig
+        struct LootConfig
         {
             public InventoryItem item;
             [Min(1)] public int number;
@@ -24,16 +25,18 @@ namespace RPG.Inventories
 
         void Awake()
         {
-            playerInventory = Inventory.GetPlayerInventory();
+            dropper = GetComponent<RandomDropper>();
+            openAnimation = GetComponent<Animation>();
+
         }
 
         void LootChest()
         {
-            alreadyLooted = true;
+            looted = true;
             
             foreach(var slot in loot)
             {
-                GetComponent<RandomDropper>().DropItem(slot.item, slot.number);
+                dropper.DropItem(slot.item, slot.number);
             }
         }
 
@@ -44,12 +47,12 @@ namespace RPG.Inventories
 
         bool IRaycastable.HandleRaycast(PlayerController callingController)
         {
-            if(!alreadyLooted)
+            if(!looted)
             {
                 if(Input.GetKeyDown(callingController.GetInteractionKey()))
                 {
                     onChestOpened?.Invoke();
-                    GetComponent<Animation>().Play();
+                    openAnimation.Play();
                     LootChest();
                 }
 
@@ -61,16 +64,16 @@ namespace RPG.Inventories
 
         object ISaveable.CaptureState()
         {
-            return alreadyLooted;
+            return looted;
         }
 
         void ISaveable.RestoreState(object state)
         {
-            alreadyLooted = (Boolean) state;
+            looted = (bool)state;
 
-            if(alreadyLooted)
+            if(looted)
             {
-                GetComponent<Animation>().Play();
+                openAnimation.Play();
             }
         }
     }

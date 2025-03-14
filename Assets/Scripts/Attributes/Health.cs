@@ -4,18 +4,19 @@ using RPG.Stats;
 using RPG.Core;
 using GameDevTV.Utils;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable, IAttributeProvider
     {
-        [SerializeField] private float regenerationPercentage = 100f;
+        [SerializeField] float regenerationPercentage = 100f;
         [SerializeField] public UnityEvent<float> onDamageTaken;
         [SerializeField] public UnityEvent onDie;
-        private LazyValue<float> health;
-        private readonly int DeadHash = Animator.StringToHash("die");
-        private bool wasDeadLastFrame = false;
-        public bool IsDead => health.value <= 0;
+        LazyValue<float> health;
+        BaseStats baseStats;
+        ActionScheduler actionScheduler;
+        bool wasDeadLastFrame = false;
 
         public float GetCurrentValue()
         {
@@ -24,101 +25,111 @@ namespace RPG.Attributes
 
         public float GetMaxValue()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
-        }
-
-        public float GetPercentage()
-        {
-            return 100 * (GetFraction());
+            return baseStats.GetStat(Stat.Health);
         }
 
         public float GetFraction()
         {
-            return health.value / GetComponent<BaseStats>().GetStat(Stat.Health);
+            return health.value / baseStats.GetStat(Stat.Health);
+        }
+
+        public bool IsDead()
+        {
+            return health.value == 0;
         }
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            if(IsDead) return;
+            if(IsDead())
+            {
+                return;
+            }
 
             health.value = Mathf.Max(0f, health.value - damage);
 
-            if(IsDead) 
+            if(IsDead())
             {
-                onDie.Invoke();
                 AwardExperience(instigator);
+                Die();
             }
             else
             {
                 onDamageTaken.Invoke(damage);
             }
 
-            UpdateState();
+            UpdateHealthState();
         }
 
         public void Heal(float amount)
         {
             health.value = Mathf.Min(health.value + amount, GetMaxValue());
-            UpdateState();
+            UpdateHealthState();
         }
 
-        private void Awake()
+        void Awake()
         {
             health = new LazyValue<float>(GetInitialHealth);
+            baseStats = GetComponent<BaseStats>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
-        private void Start()
+        void Start()
         {
             health.ForceInit();
         }
 
-        private float GetInitialHealth()
+        float GetInitialHealth()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Health);
+            return baseStats.GetStat(Stat.Health);
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
-            GetComponent<BaseStats>().onLevelUp += RegenerateHealth;
+            baseStats.onLevelUp += RegenerateHealth;
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
-            GetComponent<BaseStats>().onLevelUp -= RegenerateHealth;
+            baseStats.onLevelUp -= RegenerateHealth;
         }
 
-        private void UpdateState()
+        void UpdateHealthState()
         {
             Animator animator = GetComponent<Animator>();
 
-            if(!wasDeadLastFrame && IsDead)
+            if(!wasDeadLastFrame && IsDead())
             {           
-                GetComponent<ActionScheduler>().CancelCurrentAction();
-                animator.SetTrigger(DeadHash);
+                actionScheduler.CancelCurrentAction();
+                animator.SetTrigger("die");
             }
 
-            if(wasDeadLastFrame && !IsDead)
+            if(wasDeadLastFrame && !IsDead())
             {
                 animator.Rebind();
             }
 
-            wasDeadLastFrame = IsDead;
+            wasDeadLastFrame = IsDead();
         }
 
-        private void RegenerateHealth()
+        void RegenerateHealth()
         {
-            float regenHealthPoints = GetComponent<BaseStats>().GetStat(Stat.Health) * (regenerationPercentage / 100);
-
+            float regenHealthPoints = baseStats.GetStat(Stat.Health) * (regenerationPercentage / 100);
             health.value = Mathf.Max(health.value, regenHealthPoints);
         }
 
-        private void AwardExperience(GameObject instigator)
+        void AwardExperience(GameObject instigator)
         {
-            Experience experience = instigator.GetComponent<Experience>();
+            if(instigator.TryGetComponent(out Experience experience)) 
+            {
+                experience.GainExperience(baseStats.GetStat(Stat.ExperienceReward));
+            }
+        }
 
-            if(experience == null) return;
-
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
+        void Die()
+        {
+            onDie.Invoke();
+            GetComponent<NavMeshAgent>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
         }
 
         object ISaveable.CaptureState()
@@ -129,8 +140,7 @@ namespace RPG.Attributes
         void ISaveable.RestoreState(object state)
         {
             health.value = (float) state;
-
-            UpdateState();
+            UpdateHealthState();
         }
     }
 }

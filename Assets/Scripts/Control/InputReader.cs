@@ -86,15 +86,16 @@ namespace RPG.Control
         }       
 
         [System.Serializable]
-        private class InputAction
+        struct InputAction
         {
-            public PlayerAction action = default;
-            public KeyCode keyCode = default;
+            public PlayerAction action;
+            public KeyCode keyCode;
         }
 
-        private void BuildLookup()
+        void BuildLookup()
         {
-            keyLookup = new Dictionary<PlayerAction, KeyCode>();
+            keyLookup = new();
+
             foreach(var inputAction in inputActions)
             {
                 if(keyLookup.ContainsKey(inputAction.action))

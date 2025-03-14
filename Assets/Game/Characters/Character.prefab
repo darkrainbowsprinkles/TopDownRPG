@@ -40,7 +40,7 @@ Transform:
   - {fileID: 7299322586079519282}
   - {fileID: 1259073475070755608}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &7353398877053940831
 CapsuleCollider:
@@ -199,8 +199,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4948807693289556879}
-        m_TargetAssemblyTypeName: RPG.Audio.SFXPlayer, Assembly-CSharp
-        m_MethodName: PlayRandom
+        m_TargetAssemblyTypeName: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -214,8 +214,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 990846870796411178}
-        m_TargetAssemblyTypeName: RPG.Audio.SFXPlayer, Assembly-CSharp
-        m_MethodName: PlayRandom
+        m_TargetAssemblyTypeName: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -255,87 +255,9 @@ Transform:
   m_Children:
   - {fileID: 4948807693289556872}
   - {fileID: 990846870796411181}
-  - {fileID: 5279466358466425822}
   m_Father: {fileID: 5406678212735441867}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &30157318035130553
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 1259073475070755608}
-    m_Modifications:
-    - target: {fileID: 5273518650120797030, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_Name
-      value: Dialogue Sound
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6d676ce2624eb15428c5d1bfba1f74d9, type: 3}
---- !u!4 &5279466358466425822 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 30157318035130553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &973621004597620975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,41 +266,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1259073475070755608}
     m_Modifications:
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: da4f5695bff34bf4b88959334d31f55f, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 2ebf38d5081e6024eb5214ce611bd747, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[1].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[2].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5273518650120797030, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
         type: 3}
       propertyPath: m_Name
@@ -468,41 +355,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1259073475070755608}
     m_Modifications:
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e60ad64e34fc624ea76483921551c25, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cc33d42442263404f9c18723ddf25ef7, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1bf9ee80f2374534b80d6c5880558f5e, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[1].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[2].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5273518650120797030, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
         type: 3}
       propertyPath: m_Name

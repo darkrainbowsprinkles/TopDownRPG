@@ -1,4 +1,3 @@
-using System;
 using GameDevTV.Inventories;
 using RPG.Attributes;
 using UnityEngine;
@@ -8,19 +7,17 @@ namespace RPG.Combat
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] GameObject hitEffect = null;
         [SerializeField] float speed = 1f;
         [SerializeField] float maxLifeTime = 10f;
         [SerializeField] float lifeAfterHit = 0.5f;
         [SerializeField] bool isHoming = false;
         [SerializeField] string displayName = "";
-        Health target = null;
-        Vector3 targetPoint;
-        GameObject instigator = null;
-        float damage = 0f;
+        [SerializeField] GameObject hitEffect;
         [SerializeField] UnityEvent onHit;
-        [SerializeField] InventoryItem projectileItem;
-        [SerializeField] int itemsToConsume = 1;
+        Health target;
+        Vector3 targetPoint;
+        GameObject instigator;
+        float damage;
 
         public string GetDisplayName()
         {
@@ -39,31 +36,6 @@ namespace RPG.Combat
 
         public bool SetProjectileInfo(GameObject instigator, float damage, Health target=null, Vector3 targetPoint=default)
         {
-            Inventory inventory = instigator.GetComponent<Inventory>();
-
-            if(inventory != null)
-            {
-                if(projectileItem != null)
-                {
-                    if(!inventory.HasItem(projectileItem)) 
-                    {
-                        Destroy(gameObject);
-                        return false;
-                    }
-
-                    int slot = inventory.FindSlot(projectileItem);
-                    int number = inventory.GetNumberInSlot(slot);
-
-                    if(number < itemsToConsume)
-                    {
-                        Destroy(gameObject);
-                        return false;
-                    }
-
-                    inventory.RemoveFromSlot(slot, itemsToConsume);
-                }
-            }
-
             this.target = target;
             this.targetPoint = targetPoint;
             this.instigator = instigator;
@@ -74,14 +46,14 @@ namespace RPG.Combat
             return true;
         }
 
-        private void Start()
+        void Start()
         {
             transform.LookAt(GetAimLocation());
         }
 
-        private void Update()
+        void Update()
         {
-            if(target != null && isHoming && !target.IsDead)
+            if(target != null && isHoming && !target.IsDead())
             {
                 transform.LookAt(GetAimLocation());
             }
@@ -89,13 +61,24 @@ namespace RPG.Combat
             transform.Translate(CalculateMovement());
         }
 
-        private void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             Health health = other.GetComponent<Health>();
 
-            if (target != null && health != target) return;
-            if (health == null || health.IsDead) return;
-            if (other.gameObject == instigator) return;
+            if(target != null && health != target) 
+            {
+                return;
+            }
+
+            if(health == null || health.IsDead()) 
+            {
+                return;
+            }
+
+            if(other.gameObject == instigator) 
+            {
+                return;
+            }
 
             health.TakeDamage(instigator, damage);
 
@@ -111,7 +94,7 @@ namespace RPG.Combat
             Destroy(gameObject, lifeAfterHit);
         }
 
-        private Vector3 GetAimLocation()
+        Vector3 GetAimLocation()
         {
             if(target == null)
             {
@@ -121,14 +104,14 @@ namespace RPG.Combat
             return target.transform.position + Vector3.up * GetTargetCenter();
         }
 
-        private float GetTargetCenter()
+        float GetTargetCenter()
         {
-            return (target.GetComponent<CapsuleCollider>().height / 2);
+            return target.GetComponent<CapsuleCollider>().height / 2;
         }
 
-        private Vector3 CalculateMovement()
+        Vector3 CalculateMovement()
         {
-            return Vector3.forward * speed * Time.deltaTime;
+            return speed * Time.deltaTime * Vector3.forward;
         }
     }
 }

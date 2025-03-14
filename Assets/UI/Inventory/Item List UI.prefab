@@ -1029,7 +1029,7 @@ PrefabInstance:
     - target: {fileID: 4373750959323671345, guid: 8638014c93f14d7429e276b406663df9,
         type: 3}
       propertyPath: m_Size
-      value: 0.724148
+      value: 0.78892136
       objectReference: {fileID: 0}
     - target: {fileID: 4373750959323671345, guid: 8638014c93f14d7429e276b406663df9,
         type: 3}
@@ -1145,11 +1145,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8852396877630037379, guid: 8638014c93f14d7429e276b406663df9,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:

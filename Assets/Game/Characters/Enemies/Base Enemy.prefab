@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1766404193674305177}
   m_Layer: 0
-  m_Name: Combat Display
+  m_Name: Combat UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,16 +260,56 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 990846870796411178, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 990846870796411178, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e60ad64e34fc624ea76483921551c25, type: 3}
+    - target: {fileID: 990846870796411178, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 677a588867b19234ba2e66c09d82ba28, type: 3}
+    - target: {fileID: 990846870796411178, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1bf9ee80f2374534b80d6c5880558f5e, type: 3}
     - target: {fileID: 4485886567415715483, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
       propertyPath: damageTextPrefab
       value: 
       objectReference: {fileID: 6031385765046454184, guid: bfa3287448b69de4e917a4d732a4afda,
         type: 3}
+    - target: {fileID: 4948807693289556879, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948807693289556879, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: da4f5695bff34bf4b88959334d31f55f, type: 3}
+    - target: {fileID: 4948807693289556879, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ebf38d5081e6024eb5214ce611bd747, type: 3}
+    - target: {fileID: 4948807693289556879, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: soundEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e7a068fc894ced2438c719feae89ea40, type: 3}
     - target: {fileID: 5406678212735441867, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5406678212735441867, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
@@ -363,6 +403,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
       propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: RandomDrop
       objectReference: {fileID: 0}
@@ -385,6 +430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onDamageTaken.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: onDamageTaken.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundEffect
       objectReference: {fileID: 0}
     - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
@@ -488,7 +538,7 @@ MonoBehaviour:
   waypointDwellTime: 3
   shoutDistance: 15
   patrolSpeedFraction: 0.2
-  abilities: []
+  abilitiesSequence: []
   onAggrevated:
     m_PersistentCalls:
       m_Calls:

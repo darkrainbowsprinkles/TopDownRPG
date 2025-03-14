@@ -10,7 +10,7 @@ namespace RPG.Combat
     {
         [SerializeField] UnityEvent onTargetsAggrevated;
         [SerializeField] UnityEvent onNoTargets;
-        List<CombatTarget> targets = new List<CombatTarget>();
+        List<CombatTarget> targets = new();
         bool alreadyInCombat = false;
 
         void OnTriggerEnter(Collider other)
@@ -38,7 +38,7 @@ namespace RPG.Combat
             var health = target.GetComponent<Health>();
             var controller = target.GetComponent<AIController>();
 
-            if(health != null && controller != null && !health.IsDead)
+            if(health != null && controller != null && !health.IsDead())
             {
                 targets.Add(target);
                 health.onDie.AddListener(() => RemoveTarget(target));
@@ -66,9 +66,11 @@ namespace RPG.Combat
 
         void OnAggrevated()
         {
-            if(alreadyInCombat) return;
-            onTargetsAggrevated?.Invoke();
-            alreadyInCombat = true;
+            if(!alreadyInCombat) 
+            {
+                onTargetsAggrevated?.Invoke();
+                alreadyInCombat = true;
+            }
         }
 
         void OnNoTargets()

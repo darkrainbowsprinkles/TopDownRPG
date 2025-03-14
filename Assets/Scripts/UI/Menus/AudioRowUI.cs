@@ -10,26 +10,25 @@ namespace RPG.UI.Menus
         [SerializeField] Slider volumeSlider;
         [SerializeField] TMP_Text audioSettingText;
         AudioManager audioManager;
-        AudioSetting audioSetting;
-        float volume;
+        string groupName;
 
-        public void Setup(AudioManager audioManager, AudioSetting audioSetting, float volume)
+        public void Setup(AudioManager audioManager, string groupName)
         {
             this.audioManager = audioManager;
-            this.audioSetting = audioSetting;
-            this.volume = volume;
+            this.groupName = groupName;
         }
 
-        private void Start()
+        void Start()
         {
-            volumeSlider.value = audioManager.GetVolume(audioSetting);
-            audioSettingText.text = $"{audioSetting.ToString()} volume";
+            volumeSlider.value = Mathf.Pow(10, audioManager.GetVolume(groupName) / 20f);
+            audioSettingText.text = $"{groupName} volume";
             volumeSlider.onValueChanged.AddListener(SetVolume);
         }
 
-        private void SetVolume(float volume)
+        void SetVolume(float volume)
         {
-            audioManager.SetVolume(audioSetting, volume);
+            float dbValue = volume > 0 ? Mathf.Log10(volume) * 20f : -80f;
+            audioManager.SetVolume(groupName, dbValue);
         }
     }
 }

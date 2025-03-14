@@ -1,4 +1,3 @@
-using GameDevTV.Utils;
 using RPG.Audio;
 using UnityEngine;
 
@@ -8,29 +7,25 @@ namespace RPG.UI.Menus
     {
         [SerializeField] Transform listRoot;
         [SerializeField] AudioRowUI audioRowPrefab;
-        LazyValue<AudioManager> audioManager;
+        AudioManager audioManager;
  
         void Start()
         {
-            audioManager = new LazyValue<AudioManager>( () => FindObjectOfType<AudioManager>() );
-            audioManager.ForceInit();
-            audioManager.value.onRestored += Redraw;
+            audioManager = FindObjectOfType<AudioManager>();
             Redraw();
         }   
 
         void Redraw()
         {
-            if(listRoot == null) return;
-
             foreach(Transform child in listRoot)
             {
                 Destroy(child.gameObject);
             }
 
-            foreach(var audioPair in audioManager.value.GetAudioPair())
+            foreach(var audioGroup in audioManager.GetAudioMixerGroups())
             {
                 var rowInstance = Instantiate(audioRowPrefab, listRoot);
-                rowInstance.Setup(audioManager.value, audioPair.Key, audioPair.Value);
+                rowInstance.Setup(audioManager, audioGroup.name);
             }
         }
     }

@@ -6,7 +6,6 @@ using RPG.Audio;
 using RPG.Movement;
 using RPG.SceneManagement;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -18,7 +17,6 @@ namespace RPG.Control
         [SerializeField] float fadeMusicTime = 2f;
         [SerializeField][Range(0,100)] float playerHealthRegenPercentage = 20;
         [SerializeField][Range(0,100)] float enemyHealthRegenPercentage = 20;
-
         Health health;
 
         void Awake()
@@ -29,7 +27,7 @@ namespace RPG.Control
 
         void Start()
         {
-            if(health.IsDead)
+            if(health.IsDead())
             {
                 Respawn();
             }
@@ -81,7 +79,7 @@ namespace RPG.Control
             {
                 Health enemyHealth = enemyController.GetComponent<Health>();
 
-                if(enemyHealth != null && !enemyHealth.IsDead)
+                if(enemyHealth != null && !enemyHealth.IsDead())
                 {
                     enemyHealth.Heal(health.GetMaxValue() * enemyHealthRegenPercentage / 100); 
                     enemyController.Reset();

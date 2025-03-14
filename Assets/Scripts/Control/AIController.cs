@@ -23,25 +23,22 @@ namespace RPG.Control
         [SerializeField] AbilitySequence[] abilitiesSequence;
         [SerializeField] public UnityEvent onAggrevated;
         [SerializeField] public UnityEvent onPacified;
-
         Fighter fighter;
         Mover mover;
         ActionScheduler scheduler;
         Health health;
         GameObject player;
         LazyValue<Vector3> guardPosition;
-
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedWaypoint = Mathf.Infinity;
         float timeSinceAggrevated = Mathf.Infinity;
-
         int currentWaypointIndex = 0;
         int currentAbilityIndex = 0;
         int currentAbilityUsage = 0;
         AbilityData[] currentAbilitySequence;
 
         [System.Serializable]
-        class AbilitySequence
+        struct AbilitySequence
         {
             [Range(0,1)] public float maxHealthFraction;
             [Range(0,1)] public float minHealthFraction;
@@ -49,7 +46,7 @@ namespace RPG.Control
         }
 
         [System.Serializable]
-        class AbilityData
+        struct AbilityData
         {
             public Ability ability;
             public int timesToUse;
@@ -67,10 +64,19 @@ namespace RPG.Control
             ResetState();
         }
 
-        private void Awake()
+        public void CycleWaypoint()
+        {
+            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        public Vector3 GetCurrentWaypoint()
+        {
+            return patrolPath.GetWaypoint(currentWaypointIndex);
+        }
+
+        void Awake()
         {
             player = GameObject.FindWithTag("Player");
-
             fighter = GetComponent<Fighter>();
             mover = GetComponent<Mover>();
             scheduler = GetComponent<ActionScheduler>();
@@ -79,28 +85,34 @@ namespace RPG.Control
             guardPosition.ForceInit();
         }
 
-        private void Start()
+        void Start()
         {
             SelectAbilitySequence(0);
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             health.onDamageTaken.AddListener(SelectAbilitySequence);
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             health.onDamageTaken.RemoveListener(SelectAbilitySequence);
         }
 
-        private void SelectAbilitySequence(float damage)
+        void SelectAbilitySequence(float damage)
         {
-            if(abilitiesSequence.Length == 0) return;
+            if(abilitiesSequence.Length == 0) 
+            {
+                return;
+            }
 
             foreach(var sequence in abilitiesSequence)
             {
-                if(sequence.abilities == currentAbilitySequence) continue;
+                if(sequence.abilities == currentAbilitySequence) 
+                {
+                    continue;
+                }
 
                 if(health.GetFraction() >= sequence.minHealthFraction && health.GetFraction() <= sequence.maxHealthFraction)
                 {
@@ -113,15 +125,18 @@ namespace RPG.Control
             }
         }
 
-        private void Update()
+        void Update()
         {
-            if (health.IsDead) return;
+            if(health.IsDead()) 
+            {
+                return;
+            }
 
-            if (IsAggrevated() && fighter.CanAttack(player))
+            if(IsAggrevated() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
             }
-            else if (timeSinceLastSawPlayer < suspicionTime)
+            else if(timeSinceLastSawPlayer < suspicionTime)
             {
                 SuspicionBehaviour();
             }
@@ -134,14 +149,14 @@ namespace RPG.Control
             UpdateTimers();
         }
 
-        private void UpdateTimers()
+        void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
             timeSinceArrivedWaypoint += Time.deltaTime;
             timeSinceAggrevated += Time.deltaTime;
         }
 
-        private void ResetState()
+        void ResetState()
         {
             timeSinceLastSawPlayer = Mathf.Infinity;
             timeSinceArrivedWaypoint = Mathf.Infinity;
@@ -149,9 +164,12 @@ namespace RPG.Control
             currentWaypointIndex = 0;
         }
 
-        private void AttackBehaviour()
+        void AttackBehaviour()
         {
-            if(!GetComponent<Fighter>().enabled) return;
+            if(!fighter.enabled) 
+            {
+                return;
+            }
 
             if(abilitiesSequence.Length > 0)
             {
@@ -166,7 +184,7 @@ namespace RPG.Control
             AggrevateNearbyEnemies();
         }
 
-        private void UseAbilities()
+        void UseAbilities()
         {
             var selectedAbilityData = currentAbilitySequence[currentAbilityIndex];
 
@@ -184,7 +202,7 @@ namespace RPG.Control
             currentAbilityIndex = GetNextAbilityIndex();
         }
 
-        private int GetNextAbilityIndex()
+        int GetNextAbilityIndex()
         {
             if(currentAbilityIndex == currentAbilitySequence.Length - 1)
             {
@@ -194,7 +212,7 @@ namespace RPG.Control
             return currentAbilityIndex + 1;
         }
 
-        private void AggrevateNearbyEnemies()
+        void AggrevateNearbyEnemies()
         {
             RaycastHit[] hits = Physics.SphereCastAll(transform.position, shoutDistance, Vector3.up, 0);
 
@@ -202,20 +220,22 @@ namespace RPG.Control
             {
                 AIController controller = hit.transform.GetComponent<AIController>();
 
-                if(controller != null && !controller.GetComponent<Health>().IsDead)
+                if(controller != null && !controller.GetComponent<Health>().IsDead())
                 {
                     controller.Aggrevate();
                 }
             }
         }
 
-        private void SuspicionBehaviour()
+        void SuspicionBehaviour()
         {
-            if(!GetComponent<Fighter>().enabled) return;
-            scheduler.CancelCurrentAction();
+            if(fighter.enabled)
+            {
+                scheduler.CancelCurrentAction();
+            }
         }
 
-        private void PatrolBehaviour()
+        void PatrolBehaviour()
         {
             Vector3 nextPosition = guardPosition.value;
 
@@ -236,36 +256,18 @@ namespace RPG.Control
             }
         }
         
-        private bool AtWaypoint()
+        bool AtWaypoint()
         {
-            return IsInRange(transform.position, GetCurrentWaypoint(), waypointTolerance);
+            return Vector3.Distance(transform.position, GetCurrentWaypoint()) <= waypointTolerance;
         }
 
-        public void CycleWaypoint()
+        bool IsAggrevated()
         {
-            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
-        }
-
-        public Vector3 GetCurrentWaypoint()
-        {
-            return patrolPath.GetWaypoint(currentWaypointIndex);
-        }
-
-        private bool IsAggrevated()
-        {
-            return IsInRange(transform.position, player.transform.position, chaseDistance) || timeSinceAggrevated < aggroCooldownTime;
-        }
-
-        private bool IsInRange(Vector3 from, Vector3 to, float range)
-        {
-            float targetDistanceSqr  = (from - to).sqrMagnitude;
-            float rangeSqr = range * range;
-
-            return targetDistanceSqr < rangeSqr;
+            return Vector3.Distance(transform.position, player.transform.position) <= chaseDistance || timeSinceAggrevated < aggroCooldownTime;
         }
 
         // Called in Unity
-        private void OnDrawGizmosSelected()
+        void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using GameDevTV.Saving;
-using RPG.Attributes;
 
 namespace RPG.Movement
 {
@@ -10,29 +9,43 @@ namespace RPG.Movement
     {
         [SerializeField] float maxSpeed = 6f;
         [SerializeField] float maxNavPathLength = 40f;
-
-        readonly int ForwardSpeedHash = Animator.StringToHash("forwardSpeed");
-
         NavMeshAgent agent;
-        Health health;
+        Animator animator;
+        ActionScheduler actionScheduler;
+
+        [System.Serializable]
+        struct MoverSaveData
+        {
+            public SerializableVector3 position;
+            public SerializableVector3 rotation;
+        }
 
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
-            GetComponent<ActionScheduler>().StartAction(this);
-
+            actionScheduler.StartAction(this);
             MoveTo(destination, speedFraction);
         }
 
         public bool CanMoveTo(Vector3 destination)
         {
-            NavMeshPath path = new NavMeshPath();
+            NavMeshPath path = new();
+
             bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
 
-            if(!hasPath) return false;
+            if(!hasPath) 
+            {
+                return false;
+            }
 
-            if(path.status != NavMeshPathStatus.PathComplete) return false;
+            if(path.status != NavMeshPathStatus.PathComplete) 
+            {
+                return false;
+            }
 
-            if(GetPathLength(path) > maxNavPathLength) return false;
+            if(GetPathLength(path) > maxNavPathLength) 
+            {
+                return false;
+            }
 
             return true;
         }
@@ -42,37 +55,35 @@ namespace RPG.Movement
             agent.Warp(destination);
         }
 
-        private void Awake()
+        void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            health = GetComponent<Health>();
+            animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
         
-        private void Update()
+        void Update()
         {
-            agent.enabled = !GetComponent<Health>().IsDead;
-
-            GetComponent<Animator>().SetFloat(ForwardSpeedHash, GetLocalSpeed());
+            animator.SetFloat("forwardSpeed", GetLocalSpeed());
         }
 
-        private void DisableAgent()
+        void MoveTo(Vector3 destination, float speedFraction)
         {
-            agent.enabled = !health.IsDead;
-        }
-
-        public void MoveTo(Vector3 destination, float speedFraction)
-        {
+            agent.enabled = true;
             agent.destination = destination;
             agent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             agent.isStopped = false;
         }
 
-        private float GetPathLength(NavMeshPath path)
+        float GetPathLength(NavMeshPath path)
         {
             float total = 0f;
             float length = path.corners.Length;
 
-            if(length < 2f) return total;
+            if(length < 2f) 
+            {
+                return total;
+            }
 
             for (int i = 0; i < length - 1; i++)
             {
@@ -82,29 +93,24 @@ namespace RPG.Movement
             return total;
         }
 
-        private float GetLocalSpeed()
+        float GetLocalSpeed()
         {
             Vector3 globalVelocity = agent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(globalVelocity);
-
             return localVelocity.z;
         }
 
         public void Cancel()
         {
-            agent.isStopped = true;
-        }
-
-        [System.Serializable]
-        private struct MoverSaveData
-        {
-            public SerializableVector3 position;
-            public SerializableVector3 rotation;
+            if(agent.isActiveAndEnabled)
+            {
+                agent.isStopped = true;
+            }
         }
 
         object ISaveable.CaptureState()
         {
-            MoverSaveData data = new MoverSaveData();
+            MoverSaveData data = new();
 
             data.position = new SerializableVector3(transform.position);
             data.rotation = new SerializableVector3(transform.eulerAngles);
@@ -123,7 +129,7 @@ namespace RPG.Movement
 
             agent.enabled = true;
 
-            GetComponent<ActionScheduler>().CancelCurrentAction();
+            actionScheduler.CancelCurrentAction();
         }
     }
 }

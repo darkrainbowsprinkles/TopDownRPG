@@ -1277,6 +1277,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 119749525167178198, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 119749525167178198, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 314021544426876325, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2252,6 +2262,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1756919161676466570, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756919161676466570, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756919161676466570, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1793849454848322301, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2321,6 +2346,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111405219842748153, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111405219842748153, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111405219842748153, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112702489925045724, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112702489925045724, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112702489925045724, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2179355863805717126, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
@@ -2717,6 +2772,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3011072868725124524, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3011072868725124524, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3040507738186770874, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2951,6 +3016,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505575220832899835, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505575220832899835, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3505575220832899835, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3538924387020169654, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
@@ -3377,6 +3457,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4402767943662416768, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: soundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f3066b243c5528b42bc611b9f6946995, type: 3}
     - target: {fileID: 4479077006330795365, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3912,6 +3997,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5543392336191540813, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543392336191540813, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543392336191540813, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5550544582771206660, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -4126,6 +4226,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112652110809567275, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112652110809567275, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6132378666676268322, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
@@ -5007,6 +5117,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7959826358865530338, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959826358865530338, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959826358865530338, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7980177490523048067, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -5491,6 +5616,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745757141265797726, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745757141265797726, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlaySoundEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8745757141265797726, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8777182410972961108, guid: 4acfe6ea9b3af79499f8aec9f91f8845,
         type: 3}
@@ -6507,12 +6647,12 @@ PrefabInstance:
     - target: {fileID: 5383285285490158439, guid: 06302c0b70f4fa742a0d7cdaceac9006,
         type: 3}
       propertyPath: m_Size
-      value: 0.7889214
+      value: 0.78892136
       objectReference: {fileID: 0}
     - target: {fileID: 5383285285490158439, guid: 06302c0b70f4fa742a0d7cdaceac9006,
         type: 3}
       propertyPath: m_Value
-      value: 1.0000004
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5391345523817212068, guid: 06302c0b70f4fa742a0d7cdaceac9006,
         type: 3}
@@ -7634,12 +7774,12 @@ PrefabInstance:
     - target: {fileID: 4366284232439904546, guid: 54e5622fb92e9f0458f872cab83e53e0,
         type: 3}
       propertyPath: m_Size
-      value: 0.8709791
+      value: 0.87097895
       objectReference: {fileID: 0}
     - target: {fileID: 4366284232439904546, guid: 54e5622fb92e9f0458f872cab83e53e0,
         type: 3}
       propertyPath: m_Value
-      value: 1.000001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5147563561309131847, guid: 54e5622fb92e9f0458f872cab83e53e0,
         type: 3}

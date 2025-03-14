@@ -1,74 +1,50 @@
 using System.Collections;
-using System.Collections.Generic;
-using GameDevTV.Utils;
 using UnityEngine;
 
 namespace RPG.Audio
 {
-    public class MusicPlayer : SoundEmitter
+    public class MusicPlayer : MonoBehaviour
     {
         [SerializeField] float fadeOutMusicTime = 1;
         [SerializeField] float fadeInMusicTime = 0.5f;
-        [SerializeField] SceneMusicData thisSceneMusic;
-        [SerializeField] AudioConfig[] additionalMusic;
-
+        [SerializeField] MusicConfig ambientMusic;
+        [SerializeField] MusicConfig combatMusic;
+        AudioSource audioSource;
+        AudioManager audioManager;
+        MusicConfig currentMusic;
+        
         [System.Serializable]
-        class SceneMusicData
+        struct MusicConfig
         {
-            public ConditionalMusic[] ambientMusic;
-            public ConditionalMusic[] combatMusic;
+            public AudioClip clip;
+            [HideInInspector] public float resumeTime;
         }
 
-        [System.Serializable]
-        class ConditionalMusic
+        void Awake()
         {
-            public AudioConfig audioConfig;
-            public Condition playCondition;
+            audioSource = GetComponent<AudioSource>();
         }
 
-        public override void OnStartAction()
+        void Start()
         {
-            PlayAudio(GetValidMusic(thisSceneMusic.ambientMusic));
+            audioManager = FindObjectOfType<AudioManager>();
+            PlayMusic(ambientMusic);
         }
 
-        public void FadeInAmbientMusic()
+        IEnumerator FadeInMusicRoutine(MusicConfig music)
         {
-            var validMusic = GetValidMusic(thisSceneMusic.ambientMusic);
-            StartCoroutine(FadeOutInMusic(validMusic));
+            yield return audioManager.FadeSnapshot("FadeOutMusic", fadeOutMusicTime);
+            PlayMusic(music);
+            yield return audioManager.FadeSnapshot("FadeInMusic", fadeInMusicTime);
         }
 
-        public void FadeInCombatMusic()
+        void PlayMusic(MusicConfig music)
         {
-            var validMusic = GetValidMusic(thisSceneMusic.combatMusic);
-            StartCoroutine(FadeOutInMusic(validMusic));
-        }
-
-        public void FadeInAdditionalMusic(int index)
-        {
-            StartCoroutine(FadeOutInMusic(additionalMusic[index]));
-        }
-
-        private AudioConfig GetValidMusic(ConditionalMusic[] conditionalMusic)
-        {   
-            foreach(var track in conditionalMusic)
-            {
-                if(!track.playCondition.Check(GetPredicates())) continue;
-                return track.audioConfig;
-            }
-
-            return null;
-        }
-
-        private IEnumerable<IPredicateEvaluator> GetPredicates()
-        {
-            return GameObject.FindWithTag("Player").GetComponents<IPredicateEvaluator>();
-        }
-
-        private IEnumerator FadeOutInMusic(AudioConfig audioConfig)
-        {
-            yield return audioManager.value.FadeOutMusic(fadeOutMusicTime);
-            PlayAudio(audioConfig);
-            yield return audioManager.value.FadeInMusic(fadeInMusicTime);
+            currentMusic.resumeTime = audioSource.time;
+            audioSource.Stop();
+            audioSource.clip = music.clip;
+            audioSource.time = music.resumeTime;
+            audioSource.Play();
         }
     }
 }

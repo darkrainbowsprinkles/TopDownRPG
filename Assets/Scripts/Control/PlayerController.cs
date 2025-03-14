@@ -10,14 +10,14 @@ namespace RPG.Control
 {
     public class PlayerController : Controller
     {
-        [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] CursorMapping[] cursorMappings;
         [SerializeField] float maxNavMeshProjectionDistance = 40;
         [SerializeField] float raycastRadius = 1;
-
         bool isDraggingUI = false;
-        Health health = null;
-        ActionStore actionStore = null;
-        InputReader inputReader = null;
+        Health health;
+        Mover mover;
+        ActionStore actionStore;
+        InputReader inputReader;
         const int actionSlots = 6;
 
         public static Ray GetMouseRay()
@@ -46,13 +46,14 @@ namespace RPG.Control
         void Awake()
         {
             health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
             actionStore = GetComponent<ActionStore>();
             inputReader = GetComponent<InputReader>();
         }
 
         void Update()
         {
-            if(health.IsDead) 
+            if(health.IsDead()) 
             {
                 SetCursor(CursorType.None);
                 return;
@@ -60,9 +61,20 @@ namespace RPG.Control
 
             UseAbilites();
 
-            if(InteractWithUI()) return;
-            if(InteractWithMovement()) return;
-            if(InteractWithComponent()) return;
+            if(InteractWithUI()) 
+            {
+                return;
+            }
+
+            if(InteractWithMovement()) 
+            {
+                return;
+            }
+
+            if(InteractWithComponent()) 
+            {
+                return;
+            }
 
             SetCursor(CursorType.None);
         }
@@ -95,7 +107,7 @@ namespace RPG.Control
 
         void UseAbilites()
         {
-            for (int i = 0; i < actionSlots; i++)
+            for(int i = 0; i < actionSlots; i++)
             {
                 if(Input.GetKeyDown(inputReader.GetKeyCode(PlayerAction.Ability1) + i))
                 {
@@ -142,17 +154,18 @@ namespace RPG.Control
 
         bool InteractWithMovement()
         {
-            Vector3 target;
-
-            bool hasHit = RaycastNavMesh(out target);
+            bool hasHit = RaycastNavMesh(out Vector3 target);
 
             if(hasHit)
             {
-                if(!GetComponent<Mover>().CanMoveTo(target)) return false;
+                if(!mover.CanMoveTo(target)) 
+                {
+                    return false;
+                }
 
                 if(Input.GetKey(inputReader.GetKeyCode(PlayerAction.Interaction)))
                 {
-                    GetComponent<Mover>().StartMoveAction(target, 1f);
+                    mover.StartMoveAction(target, 1f);
                 }
 
                 SetCursor(CursorType.Movement);
@@ -167,25 +180,25 @@ namespace RPG.Control
         {
             target = new Vector3();
 
-            RaycastHit raycastHit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out raycastHit);
+            bool hasHit = Physics.Raycast(GetMouseRay(), out RaycastHit raycastHit);
 
-            if(!hasHit) return false;
+            if(!hasHit) 
+            {
+                return false;
+            }
 
-            NavMeshHit navMeshHit;
-
-            bool hasCastToNavMesh = 
+            bool hasCastToNavMesh = NavMesh.SamplePosition
             (
-                NavMesh.SamplePosition
-                (
-                    raycastHit.point, 
-                    out navMeshHit, 
-                    maxNavMeshProjectionDistance, 
+                    raycastHit.point,
+                    out NavMeshHit navMeshHit,
+                    maxNavMeshProjectionDistance,
                     NavMesh.AllAreas
-                )
             );
 
-            if(!hasCastToNavMesh) return false;
+            if(!hasCastToNavMesh) 
+            {
+                return false;
+            }
             
             target = navMeshHit.position;
 

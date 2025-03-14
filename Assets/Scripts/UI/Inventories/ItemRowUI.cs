@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using GameDevTV.Inventories;
 using TMPro;
 using UnityEngine;
@@ -22,8 +21,6 @@ namespace RPG.UI.Inventories
         
         public void Setup(InventoryItem item, int number)
         {
-            if(item == null) return;
-
             itemNameText.text = $"{item.GetDisplayName()} x {number}";
             itemIcon.sprite = item.GetIcon();
         }

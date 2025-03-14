@@ -323,7 +323,7 @@ PrefabInstance:
     - target: {fileID: 8001874936025784341, guid: a51bdb1a05bf19c41885d84f14e4629a,
         type: 3}
       propertyPath: m_Name
-      value: Audio Fader
+      value: Audio Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -33,7 +33,7 @@ namespace RPG.Dialogue
         {
             if(TryGetComponent(out Health health))
             {
-                if(health.IsDead) 
+                if(health.IsDead()) 
                 {
                     return false;
                 } 

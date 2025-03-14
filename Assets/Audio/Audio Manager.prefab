@@ -59,10 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: e6c1afd81ed416844b59303d19bcd4f6, type: 2}
-  audioSettingsData:
-  - audioSetting: 0
-    volume: 0.5
-  - audioSetting: 1
-    volume: 1
-  - audioSetting: 2
-    volume: 1
+  audioMixerGroups:
+  - {fileID: 24300002, guid: e6c1afd81ed416844b59303d19bcd4f6, type: 2}
+  - {fileID: -3752241177318978088, guid: e6c1afd81ed416844b59303d19bcd4f6, type: 2}
+  - {fileID: 5175875725818403910, guid: e6c1afd81ed416844b59303d19bcd4f6, type: 2}

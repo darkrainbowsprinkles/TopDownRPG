@@ -17,7 +17,7 @@ namespace RPG.Combat
 
         void Update()
         {
-            if(fighter.GetTarget() == null)
+            if(fighter.GetCurrentTarget() == null)
             {
                 text.enabled = false;
                 return;
@@ -25,7 +25,7 @@ namespace RPG.Combat
 
 
             text.enabled = true;
-            Health targetHealth = fighter.GetTarget();
+            Health targetHealth = fighter.GetCurrentTarget();
             string health = string.Format("{0:0}/{1:0}", targetHealth.GetCurrentValue(), targetHealth.GetMaxValue());
             string characterClass = targetHealth.GetComponent<BaseStats>().GetCharacterClass().ToString() + ": ";
             text.text = $"{characterClass}: {health}";

@@ -9,20 +9,34 @@ namespace RPG.Combat
     [CreateAssetMenu(menuName = "RPG/Inventory/New Weapon")]
     public class WeaponConfig : EquipableItem, IModifierProvider
     {
-        [SerializeField] AnimatorOverrideController animatorOverride = null;
-        [SerializeField] Weapon equippedWeaponPrefab = null;
-        [SerializeField] Projectile projectile = null;
-        [SerializeField]  float weaponRange = 2f;
-        [SerializeField]  float weaponDamage = 10f;
-        [SerializeField]  float percentageBonus = 0f;
-        [SerializeField]  bool isRightHanded = true;
-
+        [SerializeField] AnimatorOverrideController animatorOverride;
+        [SerializeField] Weapon equippedWeaponPrefab;
+        [SerializeField] Projectile projectile;
+        [SerializeField] float weaponRange = 2f;
+        [SerializeField] float weaponDamage = 10f;
+        [SerializeField] float percentageBonus = 0f;
+        [SerializeField] bool isRightHanded = true;
         const string weaponName = "Weapon";
         
-        public bool HasProjectile() => projectile != null;
-        public float GetRange() => weaponRange;
-        public float GetDamage() => weaponDamage;
-        public float GetPercentageBonus() => percentageBonus;
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        public float GetRange()
+        {
+            return weaponRange;
+        }
+
+        public float GetDamage()
+        {
+            return weaponDamage;
+        }
+
+        public float GetPercentageBonus()
+        {
+            return percentageBonus;
+        }
 
         public Weapon Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {   
@@ -34,7 +48,6 @@ namespace RPG.Combat
             {
                 Transform handTransform = GetHandTransfrom(rightHand, leftHand);
                 weapon = Instantiate(equippedWeaponPrefab, handTransform);
-
                 weapon.gameObject.name = weaponName;
             }
 
@@ -56,11 +69,10 @@ namespace RPG.Combat
         {
             Transform handTransform = GetHandTransfrom(rightHand, leftHand);
             Projectile projectileInstance = Instantiate(projectile, handTransform.position, Quaternion.identity);
-
             projectileInstance.SetProjectileInfo(target, instigator, calculatedDamage);
         }
 
-        private Transform GetHandTransfrom(Transform rightHand, Transform leftHand)
+        Transform GetHandTransfrom(Transform rightHand, Transform leftHand)
         {
             if(isRightHanded) 
             {
@@ -72,7 +84,7 @@ namespace RPG.Combat
             }
         }
 
-        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        void DestroyOldWeapon(Transform rightHand, Transform leftHand)
         {   
             Transform oldWeapon = rightHand.Find(weaponName);
 
@@ -87,7 +99,7 @@ namespace RPG.Combat
             Destroy(oldWeapon.gameObject);
         }
 
-        private AnimatorOverrideController GetDefaultController(Animator animator)
+        AnimatorOverrideController GetDefaultController(Animator animator)
         {
             return animator.runtimeAnimatorController as AnimatorOverrideController;
         }

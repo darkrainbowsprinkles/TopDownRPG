@@ -35,7 +35,7 @@ namespace RPG.SceneManagement
 
         void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Player")
+            if(other.CompareTag("Player"))
             {
                 StartCoroutine(Transition());
             }
@@ -88,9 +88,15 @@ namespace RPG.SceneManagement
         {
             foreach(Portal portal in FindObjectsOfType<Portal>())
             {
-                if(portal == this) continue;
+                if(portal == this)
+                {
+                    continue;
+                } 
 
-                if(portal.destination != destination) continue;
+                if(portal.destination != destination) 
+                {
+                    continue;
+                }
 
                 return portal;
             }
@@ -113,7 +119,6 @@ namespace RPG.SceneManagement
         void ToggleControl(bool state)
         {
             GameObject player = GameObject.FindWithTag("Player");
-
             player.GetComponent<ActionScheduler>().CancelCurrentAction();
             player.GetComponent<PlayerController>().enabled = state;
             Cursor.visible = state;

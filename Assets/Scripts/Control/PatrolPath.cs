@@ -18,7 +18,7 @@ namespace RPG.Control
             return transform.GetChild(index).position;
         }
 
-        private void OnDrawGizmos()
+        void OnDrawGizmos()
         {
             Gizmos.color = Color.gray;
 

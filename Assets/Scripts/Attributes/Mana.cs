@@ -1,4 +1,3 @@
-using System;
 using GameDevTV.Saving;
 using GameDevTV.Utils;
 using RPG.Stats;
@@ -9,6 +8,7 @@ namespace RPG.Attributes
     public class Mana : MonoBehaviour, ISaveable, IAttributeProvider
     {
         LazyValue<float> mana;
+        BaseStats baseStats;
 
         public float GetCurrentValue()
         {
@@ -34,6 +34,7 @@ namespace RPG.Attributes
         void Awake()
         {
             mana = new LazyValue<float>(GetMaxValue);
+            baseStats = GetComponent<BaseStats>();
         }
 
         void Start()
@@ -56,7 +57,7 @@ namespace RPG.Attributes
 
         float GetRegenRate()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.ManaRegenRate);
+            return baseStats.GetStat(Stat.ManaRegenRate);
         }
 
         object ISaveable.CaptureState()

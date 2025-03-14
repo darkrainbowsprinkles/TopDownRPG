@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!245 &-7673605595487321481
-AudioMixerSnapshotController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: FadeMusicLowVolume
-  m_AudioMixer: {fileID: 24100000}
-  m_SnapshotID: b5cfadd3ba47ea9429c5ef5047442b3b
-  m_FloatValues:
-    ac74d821949a7944496ed3b8741dece4: 0
-    800c6ed3d24f99a448b6f456db8064a5: 0
-    451f97064cf475246bfd4c33f6ada940: -10
-  m_TransitionOverrides: {}
 --- !u!245 &-5546505436827543330
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -43,7 +29,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 5773826954541316081}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -75,7 +61,6 @@ AudioMixerController:
   - {fileID: -3507958152196319315}
   - {fileID: 5144863113499715137}
   - {fileID: 4786713529021415258}
-  - {fileID: -7673605595487321481}
   m_StartSnapshot: {fileID: -3507958152196319315}
   m_SuspendThreshold: -80
   m_EnableSuspend: 0
@@ -83,6 +68,10 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: ac74d821949a7944496ed3b8741dece4
     name: Master
+  - guid: 451f97064cf475246bfd4c33f6ada940
+    name: Music
+  - guid: 800c6ed3d24f99a448b6f456db8064a5
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - c0625ea6bb282744fbd775ad8cd6a84b
@@ -108,7 +97,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -169,7 +158,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 8351885853978040446}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

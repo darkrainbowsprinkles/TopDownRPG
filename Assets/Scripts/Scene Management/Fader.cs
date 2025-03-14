@@ -34,12 +34,12 @@ namespace RPG.SceneManagement
             return currentActiveFade;
         }
 
-        private void Awake()
+        void Awake()
         {
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
-        private IEnumerator FadeRoutine(float alphaTarget, float time)
+        IEnumerator FadeRoutine(float alphaTarget, float time)
         {
             while(!Mathf.Approximately(canvasGroup.alpha, alphaTarget))
             {
