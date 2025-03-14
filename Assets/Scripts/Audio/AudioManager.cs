@@ -1,16 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
+using GameDevTV.Saving;
 using UnityEngine;
 using UnityEngine.Audio;
 
 namespace RPG.Audio
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioManager : MonoBehaviour, ISaveable
     {
         [SerializeField] AudioMixer audioMixer;
         const string rootGroup = "Master";
 
-        public IEnumerable<AudioMixerGroup> GetAudioMixerGroups()
+        public AudioMixerGroup[] GetAudioMixerGroups()
         {
             return audioMixer.FindMatchingGroups(rootGroup);
         }
@@ -53,6 +53,30 @@ namespace RPG.Audio
             snapshot.TransitionTo(time);
 
             yield return new WaitForSeconds(time);
+        }
+
+        object ISaveable.CaptureState()
+        {
+            var groups = GetAudioMixerGroups();
+            var volumes = new float[groups.Length];
+
+            for(int i = 0; i < groups.Length; i++)
+            {
+                volumes[i] = GetVolume(groups[i].name);
+            }
+
+            return volumes;
+        }
+
+        void ISaveable.RestoreState(object state)
+        {
+            var groups = GetAudioMixerGroups();
+            var volumes = (float[])state;
+
+            for(int i = 0; i < groups.Length; i++)
+            {
+                SetVolume(groups[i].name, volumes[i]);
+            }
         }
     }
 }

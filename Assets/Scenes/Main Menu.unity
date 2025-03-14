@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0073763183, g: 0.004896662, b: 0.01636611, a: 1}
+  m_IndirectSpecularColor: {r: 0.006476107, g: 0.028677255, b: 0.07904463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -17938,6 +17938,11 @@ PrefabInstance:
       propertyPath: fadeOutMusicTime
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7522988302028012636, guid: 5e1b8378481ff2942b18bd600571097a,
+        type: 3}
+      propertyPath: ambientMusic.clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fb273957e7edc6a4fb4bc7a4449bd241, type: 3}
     - target: {fileID: 7522988302028012636, guid: 5e1b8378481ff2942b18bd600571097a,
         type: 3}
       propertyPath: thisSceneMusic.ambientMusic.Array.size
