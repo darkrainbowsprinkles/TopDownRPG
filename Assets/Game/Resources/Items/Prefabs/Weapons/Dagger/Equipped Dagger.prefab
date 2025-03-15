@@ -49,9 +49,10 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4849278027652480011}
-        m_TargetAssemblyTypeName: RPG.Audio.SFXPlayer, Assembly-CSharp
-        m_MethodName: PlayRandom
+      - m_Target: {fileID: 2506057390673258764, guid: 34d03633752ced24098728ba83f9f05e,
+          type: 3}
+        m_TargetAssemblyTypeName: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
+        m_MethodName: PlaySoundEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -79,6 +80,11 @@ PrefabInstance:
       propertyPath: soundEffects.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
+        type: 3}
+      propertyPath: soundEffects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ecb1846d8f5334e4098e073700dc88fb, type: 3}
     - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
         type: 3}
       propertyPath: soundEffects.Array.data[0].clip
@@ -152,18 +158,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d676ce2624eb15428c5d1bfba1f74d9, type: 3}
---- !u!114 &4849278027652480011 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 748536425771550571}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14fbc39cb4f88d54a886102a8077d392, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &4849278027652480012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,

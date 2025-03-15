@@ -39,19 +39,23 @@ namespace RPG.Audio
         {
             return StartCoroutine(FadeSnapshot("FadeInMaster", time));
         }
+
+        public Coroutine FadeOutMusic(float time)
+        {
+            return StartCoroutine(FadeSnapshot("FadeOutMusic", time));
+        }
+
+        public Coroutine FadeInMusic(float time)
+        {
+            return StartCoroutine(FadeSnapshot("FadeInMusic", time));
+        }
         
-        public IEnumerator FadeSnapshot(string snapshotName, float time)
+        IEnumerator FadeSnapshot(string snapshotName, float time)
         {
             var snapshot = audioMixer.FindSnapshot(snapshotName);
 
-            if(snapshot == null)
-            {
-                Debug.LogError($"Snapshot '{snapshotName}' not found");
-                yield break;
-            }
-
             snapshot.TransitionTo(time);
-
+            
             yield return new WaitForSeconds(time);
         }
 

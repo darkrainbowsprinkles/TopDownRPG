@@ -1,23 +1,33 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Audio
 {
     public class MusicPlayer : MonoBehaviour
     {
-        [SerializeField] float fadeOutMusicTime = 1;
-        [SerializeField] float fadeInMusicTime = 0.5f;
-        [SerializeField] MusicConfig ambientMusic;
-        [SerializeField] MusicConfig combatMusic;
+        [SerializeField] AudioClip defaultMusic;
         AudioSource audioSource;
         AudioManager audioManager;
-        MusicConfig currentMusic;
-        
-        [System.Serializable]
-        struct MusicConfig
+        Dictionary<AudioClip, float> resumeTimes = new();
+
+        public AudioClip GetDefaultMusic()
         {
-            public AudioClip clip;
-            [HideInInspector] public float resumeTime;
+            return defaultMusic;
+        }
+
+        public AudioClip GetCurrentMusic()
+        {
+            return audioSource.clip;
+        }
+
+        public IEnumerator FadeMusic(AudioClip music, float fadeOutTime, float fadeInTime)
+        {
+            yield return audioManager.FadeOutMusic(fadeOutTime);
+
+            PlayMusic(music);
+
+            yield return audioManager.FadeInMusic(fadeInTime);
         }
 
         void Awake()
@@ -28,22 +38,31 @@ namespace RPG.Audio
         void Start()
         {
             audioManager = FindObjectOfType<AudioManager>();
-            PlayMusic(ambientMusic);
+
+            PlayMusic(defaultMusic);
         }
 
-        IEnumerator FadeInMusicRoutine(MusicConfig music)
+        void PlayMusic(AudioClip music)
         {
-            yield return audioManager.FadeSnapshot("FadeOutMusic", fadeOutMusicTime);
-            PlayMusic(music);
-            yield return audioManager.FadeSnapshot("FadeInMusic", fadeInMusicTime);
-        }
+            if(music == GetCurrentMusic())
+            {
+                return;
+            }
+            
+            if(audioSource.clip != null)
+            {
+                resumeTimes[audioSource.clip] = audioSource.time;
+            }
 
-        void PlayMusic(MusicConfig music)
-        {
-            currentMusic.resumeTime = audioSource.time;
+            if(resumeTimes.ContainsKey(music))
+            {
+                audioSource.time = resumeTimes[music];
+            }
+
             audioSource.Stop();
-            audioSource.clip = music.clip;
-            audioSource.time = music.resumeTime;
+
+            audioSource.clip = music;
+
             audioSource.Play();
         }
     }

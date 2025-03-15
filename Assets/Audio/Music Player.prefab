@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1324362001676681597
 AudioSource:
@@ -142,11 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e9c9f6013016545b390d5f7a689ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutMusicTime: 1.5
-  fadeInMusicTime: 1
-  ambientMusic:
-    clip: {fileID: 0}
-    resumeTime: 0
-  combatMusic:
-    clip: {fileID: 0}
-    resumeTime: 0
+  defaultMusic: {fileID: 0}

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace RPG.Audio
 {
+    [RequireComponent(typeof(AudioSource))]
     public class SoundEffectPlayer : MonoBehaviour
     {
         [SerializeField] AudioClip[] soundEffects;

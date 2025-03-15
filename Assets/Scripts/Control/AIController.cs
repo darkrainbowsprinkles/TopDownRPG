@@ -5,7 +5,6 @@ using RPG.Movement;
 using RPG.Attributes;
 using GameDevTV.Utils;
 using System;
-using UnityEngine.Events;
 using RPG.Abilities;
 
 namespace RPG.Control
@@ -21,8 +20,6 @@ namespace RPG.Control
         [SerializeField] float shoutDistance = 5f;
         [SerializeField] [Range(0f,1f)] float patrolSpeedFraction = 0.2f;
         [SerializeField] AbilitySequence[] abilitiesSequence;
-        [SerializeField] public UnityEvent onAggrevated;
-        [SerializeField] public UnityEvent onPacified;
         Fighter fighter;
         Mover mover;
         ActionScheduler scheduler;
@@ -52,9 +49,13 @@ namespace RPG.Control
             public int timesToUse;
         }
 
-        public void Aggrevate()
+        public bool IsAggravated()
         {
-            onAggrevated?.Invoke();
+            return Vector3.Distance(transform.position, player.transform.position) <= chaseDistance || timeSinceAggrevated < aggroCooldownTime;
+        }
+
+        public void Aggravate()
+        {
             timeSinceAggrevated = 0f;
         }
 
@@ -132,7 +133,7 @@ namespace RPG.Control
                 return;
             }
 
-            if(IsAggrevated() && fighter.CanAttack(player))
+            if(IsAggravated() && fighter.CanAttack(player))
             {
                 AttackBehaviour();
             }
@@ -142,7 +143,6 @@ namespace RPG.Control
             }
             else
             {
-                onPacified?.Invoke();
                 PatrolBehaviour();
             }
             
@@ -222,7 +222,7 @@ namespace RPG.Control
 
                 if(controller != null && !controller.GetComponent<Health>().IsDead())
                 {
-                    controller.Aggrevate();
+                    controller.Aggravate();
                 }
             }
         }
@@ -259,11 +259,6 @@ namespace RPG.Control
         bool AtWaypoint()
         {
             return Vector3.Distance(transform.position, GetCurrentWaypoint()) <= waypointTolerance;
-        }
-
-        bool IsAggrevated()
-        {
-            return Vector3.Distance(transform.position, player.transform.position) <= chaseDistance || timeSinceAggrevated < aggroCooldownTime;
         }
 
         // Called in Unity
