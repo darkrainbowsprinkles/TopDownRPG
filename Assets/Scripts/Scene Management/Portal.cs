@@ -118,9 +118,7 @@ namespace RPG.SceneManagement
 
         void ToggleControl(bool state)
         {
-            GameObject player = GameObject.FindWithTag("Player");
-            player.GetComponent<ActionScheduler>().CancelCurrentAction();
-            player.GetComponent<PlayerController>().enabled = state;
+            PlayerController.GetPlayerController().ToggleInput(state);
             Cursor.visible = state;
         }
 

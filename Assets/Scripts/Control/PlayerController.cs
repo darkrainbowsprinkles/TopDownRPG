@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using System;
 using UnityEngine.AI;
 using GameDevTV.Inventories;
+using RPG.Core;
 
 namespace RPG.Control
 {
@@ -13,16 +14,22 @@ namespace RPG.Control
         [SerializeField] CursorMapping[] cursorMappings;
         [SerializeField] float maxNavMeshProjectionDistance = 40;
         [SerializeField] float raycastRadius = 1;
-        bool isDraggingUI = false;
         Health health;
         Mover mover;
         ActionStore actionStore;
         InputReader inputReader;
+        ActionScheduler actionScheduler;
         const int actionSlots = 6;
+        bool isDraggingUI = false;
 
         public static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        public static PlayerController GetPlayerController()
+        {
+            return GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         }
 
         public KeyCode GetInteractionKey()
@@ -33,6 +40,16 @@ namespace RPG.Control
         public KeyCode GetCancelKey()
         {
             return inputReader.GetKeyCode(PlayerAction.Cancel);
+        }
+
+        public void ToggleInput(bool enabled)
+        {
+            if(!enabled)
+            {
+                actionScheduler.CancelCurrentAction();
+            }
+
+            inputReader.enabled = enabled;
         }
 
         [System.Serializable]
@@ -49,6 +66,7 @@ namespace RPG.Control
             mover = GetComponent<Mover>();
             actionStore = GetComponent<ActionStore>();
             inputReader = GetComponent<InputReader>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         void Update()
