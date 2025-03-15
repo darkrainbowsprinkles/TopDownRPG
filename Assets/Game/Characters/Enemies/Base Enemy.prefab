@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 5406678212735441867, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5406678212735441867, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
       propertyPath: onDamageTaken.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9097565465805572420, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
@@ -539,36 +539,6 @@ MonoBehaviour:
   shoutDistance: 15
   patrolSpeedFraction: 0.2
   abilitiesSequence: []
-  onAggrevated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325048332252631048}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  onPacified:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 325048332252631048}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &8818086873557907835
 MonoBehaviour:
   m_ObjectHideFlags: 0

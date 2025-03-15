@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RPG.Audio
 {
+    [RequireComponent(typeof(AudioSource))]
     public class MusicPlayer : MonoBehaviour
     {
         [SerializeField] AudioClip defaultMusic;

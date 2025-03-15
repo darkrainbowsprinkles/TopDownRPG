@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RPG.Attributes;
 using RPG.Control;
 using UnityEngine;
 
@@ -36,7 +37,21 @@ namespace RPG.Audio
         {
             if(other.TryGetComponent(out AIController controller))
             {
+                if(enemies.Contains(controller))
+                {
+                    return;
+                }
+
+                Health health = controller.GetComponent<Health>();
+
+                if(health.IsDead())
+                {
+                    return;
+                }
+
                 enemies.Add(controller);
+
+                health.onDie.AddListener(() => enemies.Remove(controller));
             }
         }
 
@@ -44,7 +59,11 @@ namespace RPG.Audio
         {
             if(other.TryGetComponent(out AIController controller))
             {
-                enemies.Remove(controller);
+                Health health = controller.GetComponent<Health>();
+
+                enemies.Add(controller);
+                
+                health.onDie.RemoveListener(() => enemies.Remove(controller));
             }
         }
 

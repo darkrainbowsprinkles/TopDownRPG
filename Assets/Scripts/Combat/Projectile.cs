@@ -1,7 +1,5 @@
-using GameDevTV.Inventories;
 using RPG.Attributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -9,11 +7,9 @@ namespace RPG.Combat
     {
         [SerializeField] float speed = 1f;
         [SerializeField] float maxLifeTime = 10f;
-        [SerializeField] float lifeAfterHit = 0.5f;
         [SerializeField] bool isHoming = false;
         [SerializeField] string displayName = "";
         [SerializeField] GameObject hitEffect;
-        [SerializeField] UnityEvent onHit;
         Health target;
         Vector3 targetPoint;
         GameObject instigator;
@@ -84,14 +80,12 @@ namespace RPG.Combat
 
             speed = 0f;
 
-            onHit.Invoke();
-
             if(hitEffect != null)
             {
                 Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
 
-            Destroy(gameObject, lifeAfterHit);
+            Destroy(gameObject);
         }
 
         Vector3 GetAimLocation()

@@ -9,7 +9,7 @@ namespace RPG.Combat
 
         public void OnHit() 
         { 
-            onHit.Invoke();
+            onHit?.Invoke();
         }
     }
 }

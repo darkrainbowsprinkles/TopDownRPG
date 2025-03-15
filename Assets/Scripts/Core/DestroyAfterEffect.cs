@@ -4,26 +4,20 @@ namespace RPG.Core
 {
     public class DestroyAfterEffect : MonoBehaviour
     {
-        [SerializeField] GameObject targetToDestroy;
+        AudioSource audioSource;
         new ParticleSystem particleSystem;
 
         void Awake()
         {
-            particleSystem = GetComponent<ParticleSystem>();
+            audioSource = GetComponentInChildren<AudioSource>();
+            particleSystem = GetComponentInChildren<ParticleSystem>();
         }
 
         void Update()
         {
-            if(!particleSystem.IsAlive())
+            if(!particleSystem.IsAlive() && !audioSource.isPlaying)
             {
-                if(targetToDestroy != null)
-                {
-                    Destroy(targetToDestroy);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
         }
     }

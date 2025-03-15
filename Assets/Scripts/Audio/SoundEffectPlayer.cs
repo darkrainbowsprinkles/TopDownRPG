@@ -14,7 +14,6 @@ namespace RPG.Audio
         {
             int randomIndex = Random.Range(0, soundEffects.Length);
             audioSource.PlayOneShot(soundEffects[randomIndex]);
-            
         }
 
         void Awake()

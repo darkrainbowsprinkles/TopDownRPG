@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1825294780029136799}
-  - {fileID: 2506057390673258763}
+  - {fileID: 7176275361615491372}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,8 +49,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2506057390673258764, guid: 34d03633752ced24098728ba83f9f05e,
-          type: 3}
+      - m_Target: {fileID: 7176275361615491371}
         m_TargetAssemblyTypeName: RPG.Audio.SoundEffectPlayer, Assembly-CSharp
         m_MethodName: PlaySoundEffect
         m_Mode: 1
@@ -127,7 +126,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1825294780029258997}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7775465507956363884
+--- !u!1001 &7185379083787541473
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -135,92 +134,72 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1468309863435132905}
     m_Modifications:
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: playRandomOnStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ecb1846d8f5334e4098e073700dc88fb, type: 3}
-    - target: {fileID: 5273518650120797024, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
-      propertyPath: soundEffects.Array.data[0].volumeFraction
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797030, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373004, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_Name
-      value: Hit Sound
+      value: Heavy Sword Hit SFX
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
-        type: 3}
+    - target: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6d676ce2624eb15428c5d1bfba1f74d9, type: 3}
---- !u!4 &2506057390673258763 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5273518650120797031, guid: 6d676ce2624eb15428c5d1bfba1f74d9,
+  m_SourcePrefab: {fileID: 100100000, guid: 10ffd992b8a5e224e8488ba5970df14a, type: 3}
+--- !u!114 &7176275361615491371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9245103983373002, guid: 10ffd992b8a5e224e8488ba5970df14a,
     type: 3}
-  m_PrefabInstance: {fileID: 7775465507956363884}
+  m_PrefabInstance: {fileID: 7185379083787541473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fbc39cb4f88d54a886102a8077d392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &7176275361615491372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9245103983373005, guid: 10ffd992b8a5e224e8488ba5970df14a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7185379083787541473}
   m_PrefabAsset: {fileID: 0}

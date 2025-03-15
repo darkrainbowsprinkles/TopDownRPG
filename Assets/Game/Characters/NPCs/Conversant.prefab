@@ -13,10 +13,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Conversant
       objectReference: {fileID: 0}
+    - target: {fileID: 990846870796411180, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2213373714675495569, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
       propertyPath: uniqueIdentifier
       value: 6315ab5b-b069-487e-89d5-4279557a131b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948807693289556873, guid: 602cc502bade4b444ab927133e956ffd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5406678212735441867, guid: 602cc502bade4b444ab927133e956ffd,
         type: 3}
