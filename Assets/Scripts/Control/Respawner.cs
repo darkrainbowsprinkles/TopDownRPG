@@ -64,7 +64,7 @@ namespace RPG.Control
             Vector3 positionDelta = respawnLocation.position - transform.position;
 
             GetComponent<Mover>().Teleport(respawnLocation.position);
-            health.Heal(health.GetMaxValue() * playerHealthRegenPercentage / 100);
+            health.Heal(health.GetMaxHealth() * playerHealthRegenPercentage / 100);
             var activeCamera = FindObjectOfType<CinemachineBrain>().ActiveVirtualCamera;
 
             if(activeCamera.Follow == transform)
@@ -81,7 +81,7 @@ namespace RPG.Control
 
                 if(enemyHealth != null && !enemyHealth.IsDead())
                 {
-                    enemyHealth.Heal(health.GetMaxValue() * enemyHealthRegenPercentage / 100); 
+                    enemyHealth.Heal(health.GetMaxHealth() * enemyHealthRegenPercentage / 100); 
                     enemyController.Reset();
                 }
             }

@@ -1,12 +1,11 @@
 using System;
-using RPG.Attributes;
 using RPG.Inventories;
 using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Stats
 {
-    public class Experience : MonoBehaviour, ISaveable, IItemStore, IAttributeProvider
+    public class Experience : MonoBehaviour, ISaveable, IItemStore
     {
         [SerializeField] float experiencePoints = 0f;
         public event Action onExperienceGained;
@@ -51,16 +50,6 @@ namespace RPG.Stats
             }
 
             return 0;
-        }
-
-        float IAttributeProvider.GetMaxValue()
-        {
-            return 0;
-        }
-
-        float IAttributeProvider.GetCurrentValue()
-        {
-            return GetPoints();
         }
     }
 }

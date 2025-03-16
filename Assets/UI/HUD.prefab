@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7439143645922330044}
   - component: {fileID: 7297690184653037846}
   m_Layer: 5
-  m_Name: Experience Value
+  m_Name: Experience Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 8522824091505666773}
   - component: {fileID: 8156383788003694146}
   m_Layer: 5
-  m_Name: Health Value
+  m_Name: Health Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,7 +440,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6517726409923594956}
+  - {fileID: 1283641435192871379}
+  - {fileID: 4360792003985380865}
+  - {fileID: 7152669816064979867}
+  - {fileID: 9141620967471305916}
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -532,7 +535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5701085575819592520}
-  - component: {fileID: 4071298556703197044}
+  - component: {fileID: 18208818989441158}
   m_Layer: 5
   m_Name: Level Display
   m_TagString: Untagged
@@ -561,7 +564,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4071298556703197044
+--- !u!114 &18208818989441158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -570,16 +573,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1294221572723380169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7237050c385dc44e9adb0e860b0d2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d595ee3f07e5e74db3440ba5849738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueProviderBehaviour: {fileID: 0}
-  progressBarData:
-    foreground: {fileID: 0}
-  displayTextData:
-    label: 'Lv: '
-    displayText: {fileID: 6098118423409979361}
-    displayType: 0
+  stats: {fileID: 0}
+  levelText: {fileID: 6098118423409979361}
 --- !u!1 &1355044919284915010
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +591,7 @@ GameObject:
   - component: {fileID: 6784335966919427881}
   - component: {fileID: 3015724896772568208}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Bars Conector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,12 +609,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6795401302600969596}
+  m_Father: {fileID: 3492303999704658765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -150}
+  m_AnchoredPosition: {x: 174.20824, y: -161.31847}
   m_SizeDelta: {x: 250, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8947307789723077387
@@ -682,7 +680,7 @@ GameObject:
   - component: {fileID: 9141620967471305916}
   - component: {fileID: 6204379608734104470}
   m_Layer: 5
-  m_Name: Values
+  m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +693,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1708203607414105446}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -703,12 +701,12 @@ RectTransform:
   - {fileID: 5701085575819592520}
   - {fileID: 372639782691740227}
   - {fileID: 3689637529907996516}
-  m_Father: {fileID: 6517726409923594956}
+  m_Father: {fileID: 3492303999704658765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 640, y: -64.742}
+  m_AnchoredPosition: {x: 664.20825, y: 710.27905}
   m_SizeDelta: {x: 780.606, y: 195.064}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6204379608734104470
@@ -746,7 +744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1283641435192871379}
-  - component: {fileID: 1191047325619295359}
+  - component: {fileID: 1253848340151424821}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -767,15 +765,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2809357227689994462}
-  m_Father: {fileID: 6795401302600969596}
+  m_Father: {fileID: 3492303999704658765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 525, y: -103}
+  m_AnchoredPosition: {x: 549.20825, y: -114.31846}
   m_SizeDelta: {x: 600, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1191047325619295359
+--- !u!114 &1253848340151424821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -784,16 +782,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2606817613475971891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7237050c385dc44e9adb0e860b0d2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: a5a1827f7218023429de868fbb9366bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueProviderBehaviour: {fileID: 0}
-  progressBarData:
-    foreground: {fileID: 2147513446172497723}
-  displayTextData:
-    label: 
-    displayText: {fileID: 8156383788003694146}
-    displayType: 1
+  health: {fileID: 0}
+  foreground: {fileID: 2147513446172497723}
+  healthText: {fileID: 8156383788003694146}
 --- !u!1 &3268969328662976511
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,83 +839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 502703687167223433}
---- !u!1 &3463525097681012741
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6517726409923594956}
-  m_Layer: 5
-  m_Name: Stats
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6517726409923594956
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3463525097681012741}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6795401302600969596}
-  - {fileID: 9141620967471305916}
-  m_Father: {fileID: 3492303999704658765}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 595.8572, y: -274.979}
-  m_SizeDelta: {x: 1143.298, y: 527.321}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &3946138242224080618
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6795401302600969596}
-  m_Layer: 5
-  m_Name: Bars
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &6795401302600969596
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3946138242224080618}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1283641435192871379}
-  - {fileID: 4360792003985380865}
-  - {fileID: 7152669816064979867}
-  m_Father: {fileID: 6517726409923594956}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3997563342651732248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4360792003985380865}
-  - component: {fileID: 2655169967644053393}
+  - component: {fileID: 7477791923539223282}
   m_Layer: 5
   m_Name: Mana Bar
   m_TagString: Untagged
@@ -1028,15 +945,15 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6042210978250062999}
-  m_Father: {fileID: 6795401302600969596}
+  m_Father: {fileID: 3492303999704658765}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 466, y: -172}
+  m_AnchoredPosition: {x: 490.20825, y: -183.31847}
   m_SizeDelta: {x: 600, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2655169967644053393
+--- !u!114 &7477791923539223282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1045,16 +962,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4745514125839571483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7237050c385dc44e9adb0e860b0d2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: ba8e91385c9a0f24e878afe8838ed23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueProviderBehaviour: {fileID: 0}
-  progressBarData:
-    foreground: {fileID: 4777492490192887353}
-  displayTextData:
-    label: 
-    displayText: {fileID: 1996402000023148493}
-    displayType: 1
+  foreground: {fileID: 4777492490192887353}
+  manaText: {fileID: 1996402000023148493}
 --- !u!1 &5323978801918067814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,7 +976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372639782691740227}
-  - component: {fileID: 1916078801505327680}
+  - component: {fileID: 3769098645104940899}
   m_Layer: 5
   m_Name: Experience Display
   m_TagString: Untagged
@@ -1093,7 +1005,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1916078801505327680
+--- !u!114 &3769098645104940899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1102,16 +1014,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5323978801918067814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7237050c385dc44e9adb0e860b0d2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 10f3352ecd5fd804c92a6096ed34e0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueProviderBehaviour: {fileID: 0}
-  progressBarData:
-    foreground: {fileID: 0}
-  displayTextData:
-    label: 'XP: '
-    displayText: {fileID: 7297690184653037846}
-    displayType: 0
+  experienceText: {fileID: 7297690184653037846}
 --- !u!1 &6427435974792928874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,7 +1398,7 @@ GameObject:
   - component: {fileID: 6998985929979437848}
   - component: {fileID: 1996402000023148493}
   m_Layer: 5
-  m_Name: Mana Value
+  m_Name: Mana Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1515,7 +1421,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.35}
+  m_AnchoredPosition: {x: -0.00012207031, y: -7.349884}
   m_SizeDelta: {x: 0, y: -14.699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6998985929979437848

@@ -1,19 +1,16 @@
 using System;
 using UnityEngine;
-using RPG.Attributes;
 using RPG.Utils;
 
 namespace RPG.Stats
 {
-    public class BaseStats : MonoBehaviour, IAttributeProvider
+    public class BaseStats : MonoBehaviour
     {
-        [Range(1, 99)]
-        [SerializeField] int startingLevel = 1;
+        [SerializeField, Range(1, 99)] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
         [SerializeField] GameObject levelUpParticleEffect = null;
         [SerializeField] bool shouldUseModifiers = false;
-
         Experience experience;
         LazyValue<int> currentLevel;
         public event Action onLevelUp;
@@ -33,19 +30,18 @@ namespace RPG.Stats
             return characterClass;
         }
 
-        private void Awake()
+        void Awake()
         {
             experience = GetComponent<Experience>();
-
             currentLevel = new LazyValue<int>(CalculateLevel);
         }
 
-        private void Start()
+        void Start()
         {   
             currentLevel.ForceInit();
         }
 
-        private void OnEnable()
+        void OnEnable()
         {
             if(experience != null)
             {
@@ -53,7 +49,7 @@ namespace RPG.Stats
             }
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             if(experience != null)
             {
@@ -61,7 +57,7 @@ namespace RPG.Stats
             }
         }
 
-        private void UpdateLevel()
+        void UpdateLevel()
         {
             int newLevel = CalculateLevel();
 
@@ -73,19 +69,22 @@ namespace RPG.Stats
             }
         }
 
-        private void LevelUpEffect()
+        void LevelUpEffect()
         {
             Instantiate(levelUpParticleEffect, transform);
         }
 
-        private float GetBaseStat(Stat stat)
+        float GetBaseStat(Stat stat)
         {
             return progression.GetStat(stat, characterClass, GetLevel());
         }
 
-        private float GetAdditiveModifiers(Stat stat)
+        float GetAdditiveModifiers(Stat stat)
         {
-            if(!shouldUseModifiers) return 0f;
+            if(!shouldUseModifiers) 
+            {
+                return 0f;
+            }
 
             float total = 0f;
 
@@ -100,9 +99,12 @@ namespace RPG.Stats
             return total;
         }
         
-        private float GetPercentageModifier(Stat stat)
+        float GetPercentageModifier(Stat stat)
         {
-            if(!shouldUseModifiers) return 0f;
+            if(!shouldUseModifiers) 
+            {
+                return 0f;
+            }
 
             float total = 0f;
 
@@ -117,14 +119,17 @@ namespace RPG.Stats
             return total;
         }
 
-        private int CalculateLevel()
+        int CalculateLevel()
         {
-            if(experience == null) return startingLevel;
+            if(experience == null) 
+            {
+                return startingLevel;
+            }
 
             float currentXP = experience.GetPoints();
             int penultimateLevel = progression.GetLevels(Stat.ExperienceToLevelUp, characterClass);
 
-            for (int level = 1; level <= penultimateLevel; level++)
+            for(int level = 1; level <= penultimateLevel; level++)
             {
                 float XPToLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
 
@@ -137,14 +142,14 @@ namespace RPG.Stats
             return penultimateLevel + 1;
         }
 
-        float IAttributeProvider.GetMaxValue()
-        {
-            return progression.GetLevels(Stat.ExperienceToLevelUp, characterClass) + 1;
-        }
+        // float IAttributeProvider.GetMaxValue()
+        // {
+        //     return progression.GetLevels(Stat.ExperienceToLevelUp, characterClass) + 1;
+        // }
 
-        float IAttributeProvider.GetCurrentValue()
-        {
-            return GetLevel();
-        }
+        // float IAttributeProvider.GetCurrentValue()
+        // {
+        //     return GetLevel();
+        // }
     }
 }

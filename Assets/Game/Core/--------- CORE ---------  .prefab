@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 202796232565446230}
   - component: {fileID: 202796232565446231}
   - component: {fileID: 202796232565446229}
-  - component: {fileID: 23430727759455069}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: MainLight
@@ -147,21 +146,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &23430727759455069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202796232565446312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 018f539caae03da4684b5c62e20c0b96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proceduralSkybox: {fileID: 2100000, guid: 1cf6f4c6e6e0518419839d3f5448dd99, type: 2}
-  maxDayLightIntensity: 2
-  latitude: -45
 --- !u!1 &1253753024909565285
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,7 +327,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5514118108768994459, guid: 92696e2ca0bbfc046bdbaaa3dfb3b9f9, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 92696e2ca0bbfc046bdbaaa3dfb3b9f9, type: 3}
 --- !u!114 &65564263117763639 stripped
@@ -392,18 +377,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb5114adade71be46a1bc0a8d9aa5126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5644821422731155514 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5514118108768994459, guid: 92696e2ca0bbfc046bdbaaa3dfb3b9f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 202796232515411105}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adcd31c4d8df6a4488a097db4233299d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6786031848518733978 stripped
@@ -9093,11 +9066,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9182901100692705566, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
-        type: 3}
-      propertyPath: valueProviderBehaviour
-      value: 
-      objectReference: {fileID: 5644821422731155514}
     - target: {fileID: 9216517277254180934, guid: 07dc30b6f1bbb4147acd5fd5555a18f5,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -9216,6 +9184,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 6118910957741298555}
     m_Modifications:
+    - target: {fileID: 18208818989441158, guid: 7238266fd6b74b2498fbb75ac241fc95,
+        type: 3}
+      propertyPath: stats
+      value: 
+      objectReference: {fileID: 65564263117763639}
     - target: {fileID: 372639782691740227, guid: 7238266fd6b74b2498fbb75ac241fc95,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -9259,6 +9232,11 @@ PrefabInstance:
     - target: {fileID: 1191047325619295359, guid: 7238266fd6b74b2498fbb75ac241fc95,
         type: 3}
       propertyPath: valueProviderBehaviour
+      value: 
+      objectReference: {fileID: 7738801148432286229}
+    - target: {fileID: 1253848340151424821, guid: 7238266fd6b74b2498fbb75ac241fc95,
+        type: 3}
+      propertyPath: health
       value: 
       objectReference: {fileID: 7738801148432286229}
     - target: {fileID: 1916078801505327680, guid: 7238266fd6b74b2498fbb75ac241fc95,
@@ -9521,11 +9499,6 @@ PrefabInstance:
       propertyPath: m_Alpha
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9077372403907384749, guid: 7238266fd6b74b2498fbb75ac241fc95,
-        type: 3}
-      propertyPath: valueProviderBehaviour
-      value: 
-      objectReference: {fileID: 5644821422731155514}
     - target: {fileID: 9186155826339831841, guid: 7238266fd6b74b2498fbb75ac241fc95,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -9568,17 +9541,17 @@ PrefabInstance:
     - target: {fileID: 5377034239963689643, guid: 2f11f71a547c1024b8fd617968c80871,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34.028088
+      value: -18.006355
       objectReference: {fileID: 0}
     - target: {fileID: 5377034239963689643, guid: 2f11f71a547c1024b8fd617968c80871,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.3995347
+      value: 14.213532
       objectReference: {fileID: 0}
     - target: {fileID: 5377034239963689643, guid: 2f11f71a547c1024b8fd617968c80871,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.843994
+      value: 49.137985
       objectReference: {fileID: 0}
     - target: {fileID: 5377034239963689643, guid: 2f11f71a547c1024b8fd617968c80871,
         type: 3}

@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 7489713668886409250, guid: 6c69f7276451e9346b1510f57e84c000,
         type: 3}
       propertyPath: m_Name
-      value: Heading Text
+      value: Balance Text
       objectReference: {fileID: 0}
     - target: {fileID: 8857503150304518090, guid: 6c69f7276451e9346b1510f57e84c000,
         type: 3}
@@ -412,7 +412,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9218187854920164909}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8985108320382306548
+--- !u!114 &2593768738070801973
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -421,15 +421,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5361108228488668829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7237050c385dc44e9adb0e860b0d2aa, type: 3}
+  m_Script: {fileID: 11500000, guid: c4ba8b3de9f27424da2e726cd74bab29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  valueProviderBehaviour: {fileID: 0}
-  progressBarData:
-    foreground: {fileID: 0}
-  displayTextData:
-    displayText: {fileID: 3572211688675690020}
-    displayType: 2
+  balanceText: {fileID: 3572211688675690020}
 --- !u!224 &8451200115468587316 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 767059689017505561, guid: 1ab4dd5ae3ef3d54ea06e72f6004089f,

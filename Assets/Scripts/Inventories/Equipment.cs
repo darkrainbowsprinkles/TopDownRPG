@@ -1,23 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using PsychoticLab;
 using RPG.Saving;
 using RPG.Utils;
+using RPG.Core;
 
 namespace RPG.Inventories
 {
     public class Equipment : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
-        [SerializeField] DefaultMeshLocation[] defaultMeshes;
+        [SerializeField] CharacterPartLocation[] defaultCharacterParts;
         Dictionary<EquipLocation, EquipableItem> equippedItems = new();
-        Dictionary<EquipLocation, string[]> defaultMeshesLookup = new();
+        Dictionary<EquipLocation, string[]> defaultPartsLookup = new();
         CharacterCustomizer customizer;
         public event Action equipmentUpdated;
 
+        public IEnumerable<EquipLocation> GetAllPopulatedSlots()
+        {
+            return equippedItems.Keys;
+        }
+
         public EquipableItem GetItemInSlot(EquipLocation equipLocation)
         {
-            if (!equippedItems.ContainsKey(equipLocation))
+            if(!equippedItems.ContainsKey(equipLocation))
             {
                 return null;
             }
@@ -31,33 +36,36 @@ namespace RPG.Inventories
 
             equippedItems[slot] = item;
 
-            SetDefaultMesh(slot, false);
+            SetDefaultCharacterPart(slot, false);
 
-            item.ToggleCharacterParts(customizer, true);
+            foreach(var characterPart in item.GetCharacterParts())
+            {
+                customizer.ToggleCharacterPart(characterPart, true);
+            }
 
             equipmentUpdated?.Invoke();
         }
 
         public void RemoveItem(EquipLocation slot)
         {
-            GetItemInSlot(slot).ToggleCharacterParts(customizer, false);
+            var item = GetItemInSlot(slot);
+
+            foreach(var characterPart in item.GetCharacterParts())
+            {
+                customizer.ToggleCharacterPart(characterPart, false);
+            }
 
             equippedItems.Remove(slot);
 
-            SetDefaultMesh(slot, true);
+            SetDefaultCharacterPart(slot, true);
 
             equipmentUpdated?.Invoke();
         }
 
-        public IEnumerable<EquipLocation> GetAllPopulatedSlots()
-        {
-            return equippedItems.Keys;
-        }
-
         [System.Serializable]
-        struct DefaultMeshLocation
+        struct CharacterPartLocation
         {
-            public EquipLocation slot;
+            public EquipLocation equipLocation;
             public string[] characterParts;
         }
 
@@ -68,23 +76,23 @@ namespace RPG.Inventories
 
         void Start()
         {
-            foreach(var mesh in defaultMeshes)
+            foreach(var mesh in defaultCharacterParts)
             {
-                defaultMeshesLookup[mesh.slot] = mesh.characterParts;
-                SetDefaultMesh(mesh.slot, true);
+                defaultPartsLookup[mesh.equipLocation] = mesh.characterParts;
+                SetDefaultCharacterPart(mesh.equipLocation, true);
             }
         }
 
-        void SetDefaultMesh(EquipLocation slot, bool enabled)
+        void SetDefaultCharacterPart(EquipLocation slot, bool enabled)
         {
-            if(!defaultMeshesLookup.ContainsKey(slot)) 
+            if(!defaultPartsLookup.ContainsKey(slot)) 
             {
                 return;
             }
             
-            foreach(string mesh in defaultMeshesLookup[slot])
+            foreach(string mesh in defaultPartsLookup[slot])
             {
-                customizer.SetCharacterPart(mesh, enabled);
+                customizer.ToggleCharacterPart(mesh, enabled);
             }
         }
 

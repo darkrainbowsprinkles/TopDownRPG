@@ -1,18 +1,12 @@
-using RPG.Attributes;
 using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Inventories
 {
-    public class Purse : MonoBehaviour, ISaveable, IItemStore, IAttributeProvider
+    public class Purse : MonoBehaviour, ISaveable, IItemStore
     {
         [SerializeField] float startingBalance = 400;
         float balance = 0;
-
-        void Awake()
-        {
-            balance = startingBalance;
-        }
 
         public float GetBalance()
         {
@@ -24,6 +18,11 @@ namespace RPG.Inventories
             balance += amount;
         }
 
+        void Awake()
+        {
+            balance = startingBalance;
+        }
+
         object ISaveable.CaptureState()
         {
             return balance;
@@ -31,7 +30,7 @@ namespace RPG.Inventories
 
         void ISaveable.RestoreState(object state)
         {
-            balance = (float) state;
+            balance = (float)state;
         }
 
         int IItemStore.AddItems(InventoryItem item, int number)
@@ -43,16 +42,6 @@ namespace RPG.Inventories
             }
 
             return 0;
-        }
-
-        float IAttributeProvider.GetMaxValue()
-        {
-            return 0;
-        }
-
-        float IAttributeProvider.GetCurrentValue()
-        {
-            return GetBalance();
         }
     }
 }

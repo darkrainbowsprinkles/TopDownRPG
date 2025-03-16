@@ -114,7 +114,7 @@ namespace RPG.Control
                     continue;
                 }
 
-                if(health.GetFraction() >= sequence.minHealthFraction && health.GetFraction() <= sequence.maxHealthFraction)
+                if(health.GetHealthPercentage() >= sequence.minHealthFraction && health.GetHealthPercentage() <= sequence.maxHealthFraction)
                 {
                     mover.StartMoveAction(Vector3.zero, 0);
                     currentAbilitySequence = sequence.abilities;

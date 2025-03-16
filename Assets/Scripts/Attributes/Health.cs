@@ -8,29 +8,29 @@ using RPG.Utils;
 
 namespace RPG.Attributes
 {
-    public class Health : MonoBehaviour, ISaveable, IAttributeProvider
+    public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] float regenerationPercentage = 100f;
-        [SerializeField] public UnityEvent<float> onDamageTaken;
-        [SerializeField] public UnityEvent onDie;
         LazyValue<float> health;
         BaseStats baseStats;
         ActionScheduler actionScheduler;
         bool wasDeadLastFrame = false;
+        public UnityEvent<float> onDamageTaken;
+        public UnityEvent onDie;
 
-        public float GetCurrentValue()
+        public float GetCurrentHealth()
         {
             return health.value;
         }
 
-        public float GetMaxValue()
+        public float GetMaxHealth()
         {
             return baseStats.GetStat(Stat.Health);
         }
 
-        public float GetFraction()
+        public float GetHealthPercentage()
         {
-            return health.value / baseStats.GetStat(Stat.Health);
+            return GetCurrentHealth() / GetMaxHealth();
         }
 
         public bool IsDead()
@@ -62,7 +62,7 @@ namespace RPG.Attributes
 
         public void Heal(float amount)
         {
-            health.value = Mathf.Min(health.value + amount, GetMaxValue());
+            health.value = Mathf.Min(health.value + amount, GetMaxHealth());
             UpdateHealthState();
         }
 

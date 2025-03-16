@@ -5,19 +5,24 @@ using RPG.Utils;
 
 namespace RPG.Attributes
 {
-    public class Mana : MonoBehaviour, ISaveable, IAttributeProvider
+    public class Mana : MonoBehaviour, ISaveable
     {
         LazyValue<float> mana;
         BaseStats baseStats;
 
-        public float GetCurrentValue()
+        public float GetCurrentMana()
         {
             return mana.value;
         }
 
-        public float GetMaxValue()
+        public float GetMaxMana()
         {
-            return GetComponent<BaseStats>().GetStat(Stat.Mana);
+            return baseStats.GetStat(Stat.Mana);
+        }
+
+        public float GetManaPercentage()
+        {
+            return GetCurrentMana() / GetMaxMana();
         }
 
         public bool UseMana(float manaToUse)
@@ -33,7 +38,7 @@ namespace RPG.Attributes
 
         void Awake()
         {
-            mana = new LazyValue<float>(GetMaxValue);
+            mana = new LazyValue<float>(GetMaxMana);
             baseStats = GetComponent<BaseStats>();
         }
 
@@ -44,13 +49,13 @@ namespace RPG.Attributes
 
         void Update()
         {
-            if(mana.value < GetMaxValue())
+            if(mana.value < GetMaxMana())
             {
                 mana.value += Time.deltaTime * GetRegenRate();
 
-                if(mana.value > GetMaxValue())
+                if(mana.value > GetMaxMana())
                 {
-                    mana.value = GetMaxValue();
+                    mana.value = GetMaxMana();
                 }
             }
         }

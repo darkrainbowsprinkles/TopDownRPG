@@ -1,4 +1,3 @@
-using PsychoticLab;
 using UnityEngine;
 using RPG.Utils;
 
@@ -26,17 +25,9 @@ namespace RPG.Inventories
             return allowedEquipLocation;
         }
 
-        public void ToggleCharacterParts(CharacterCustomizer customizer, bool enabled)
+        public string[] GetCharacterParts()
         {
-            if(characterParts == null) 
-            {
-                return;
-            }
-
-            foreach(var part in characterParts)
-            {
-                customizer.SetCharacterPart(part, enabled);
-            }
+            return characterParts;
         }
     }
 }
