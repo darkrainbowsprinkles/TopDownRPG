@@ -1,8 +1,8 @@
 using System;
-using GameDevTV.Inventories;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Inventories;
 
 namespace RPG.UI.Inventories
 {
@@ -12,7 +12,6 @@ namespace RPG.UI.Inventories
         [SerializeField] Image itemIcon;
         public event Action onRemoved; 
 
-        // Called in animation event
         public void Remove()
         {
             onRemoved?.Invoke();

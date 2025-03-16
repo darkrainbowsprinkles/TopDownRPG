@@ -1,28 +1,28 @@
 using System;
 using System.Collections.Generic;
-using GameDevTV.Saving;
-using GameDevTV.Utils;
 using UnityEngine;
+using RPG.Saving;
+using RPG.Utils;
 
 namespace RPG.Stats
 {
     public class TraitStore : MonoBehaviour, IModifierProvider, ISaveable, IPredicateEvaluator
     {
         [SerializeField] TraitBonus[] bonusConfig;
-        Dictionary<Trait, int> assignedPoints = new Dictionary<Trait, int>();
-        Dictionary<Trait, int> stagedPoints = new Dictionary<Trait, int>();
+        Dictionary<Trait, int> assignedPoints = new();
+        Dictionary<Trait, int> stagedPoints = new();
         Dictionary<Stat, Dictionary<Trait, float>> additiveBonusCache;
         Dictionary<Stat, Dictionary<Trait, float>> percentageBonusCache;
         bool activeEnhancer = false;
         public event Action storeUpdated;
 
         [System.Serializable]
-        class TraitBonus
+        struct TraitBonus
         {
             public Trait trait;
             public Stat stat;
-            public float additiveBonusPerPoint = 0;
-            public float percentageBonusPerPoint = 0;
+            public float additiveBonusPerPoint;
+            public float percentageBonusPerPoint;
         }
 
         public static TraitStore GetPlayerTraitStore()
@@ -127,8 +127,8 @@ namespace RPG.Stats
 
         void Awake()
         {
-            additiveBonusCache = new Dictionary<Stat, Dictionary<Trait, float>>();
-            percentageBonusCache = new Dictionary<Stat, Dictionary<Trait, float>>();
+            additiveBonusCache = new();
+            percentageBonusCache = new();
 
             foreach(var bonus in bonusConfig)
             {
@@ -192,13 +192,16 @@ namespace RPG.Stats
             switch(predicate)
             {
                 case EPredicate.MinimumTrait:
+
                     if(Enum.TryParse(parameters[0], out Trait trait))
                     {
                         return GetPoints(trait) >= int.Parse(parameters[1]);
                     } 
+
                     break;
 
                 case EPredicate.HasTraitPoints:
+                
                     return GetUnassignedPoints() > 0;
             }
 

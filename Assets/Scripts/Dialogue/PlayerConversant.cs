@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using GameDevTV.Utils;
 using UnityEngine;
+using RPG.Utils;
 
 namespace RPG.Dialogue
 {

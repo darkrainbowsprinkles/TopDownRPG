@@ -1,8 +1,8 @@
-using GameDevTV.Utils;
-using RPG.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using RPG.SceneManagement;
+using RPG.Utils;
 
 namespace RPG.UI.Menus
 {

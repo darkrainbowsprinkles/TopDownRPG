@@ -3,9 +3,8 @@ using RPG.Combat;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Attributes;
-using GameDevTV.Utils;
-using System;
 using RPG.Abilities;
+using RPG.Utils;
 
 namespace RPG.Control
 {

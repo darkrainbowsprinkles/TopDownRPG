@@ -1,12 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
-using RPG.Core;
 using RPG.Control;
 using RPG.Audio;
-using GameDevTV.Utils;
-using System.Collections.Generic;
+using RPG.Utils;
 
 namespace RPG.SceneManagement
 {

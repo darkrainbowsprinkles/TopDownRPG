@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using GameDevTV.Inventories;
-using GameDevTV.Saving;
-using GameDevTV.Utils;
 using UnityEngine;
+using RPG.Inventories;
+using RPG.Saving;
+using RPG.Utils;
 
 namespace RPG.Quests
 {

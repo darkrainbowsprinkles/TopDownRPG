@@ -1,6 +1,5 @@
-using GameDevTV.Inventories;
-using GameDevTV.Saving;
 using RPG.Attributes;
+using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Inventories

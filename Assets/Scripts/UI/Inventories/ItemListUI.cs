@@ -1,5 +1,5 @@
-using GameDevTV.Inventories;
 using UnityEngine;
+using RPG.Inventories;
 
 namespace RPG.UI.Inventories
 {

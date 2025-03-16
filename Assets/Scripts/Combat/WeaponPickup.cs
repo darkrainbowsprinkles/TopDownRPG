@@ -14,7 +14,7 @@ namespace RPG.Combat
 
         void OnTriggerEnter(Collider other)
         {
-            if(other.tag == "Player")
+            if(other.CompareTag("Player"))
             {
                 Pickup(other.gameObject);
             }
@@ -31,6 +31,7 @@ namespace RPG.Combat
             {
                 subject.GetComponent<Health>().Heal(healthToRestore);
             }
+
             StartCoroutine(HideForSeconds(respawnTime));
         }
 

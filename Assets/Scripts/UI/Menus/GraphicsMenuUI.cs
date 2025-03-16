@@ -1,6 +1,6 @@
-using GameDevTV.Utils;
-using RPG.Graphics;
 using UnityEngine;
+using RPG.Graphics;
+using RPG.Utils;
 
 namespace RPG.UI.Menus
 {

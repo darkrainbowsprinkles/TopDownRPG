@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using GameDevTV.Inventories;
 using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Inventories
 {
-    [CreateAssetMenu(menuName = ("RPG/Inventory/Stats Equipable Item"))]
+    [CreateAssetMenu(menuName = "RPG/Inventories/Stats Equipable Item")]
     public class StatsEquipableItem : EquipableItem, IModifierProvider
     {
+        [SerializeField] Modifier[] additiveModifiers;
+        [SerializeField] Modifier[] percentageModifiers;
+        
         [System.Serializable]
         public struct Modifier
         {
             public Stat stat;
             public float value;
         }
-
-        [SerializeField] Modifier[] additiveModifiers;
-        [SerializeField] Modifier[] percentageModifiers;
 
         public IEnumerable<Modifier> GetAdditiveModifiers()
         {

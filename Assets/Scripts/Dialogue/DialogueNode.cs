@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GameDevTV.Utils;
 using UnityEditor;
 using UnityEngine;
+using RPG.Utils;
 
 namespace RPG.Dialogue
 {

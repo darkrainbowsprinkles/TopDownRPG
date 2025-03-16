@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using GameDevTV.Saving;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -15,7 +15,7 @@ namespace RPG.Graphics
         public event Action onRestored;
 
         [System.Serializable]
-        class GraphicSettingConfig
+        struct GraphicSettingConfig
         {
             public GraphicSetting graphicSetting;
             public int value;

@@ -1,4 +1,4 @@
-namespace GameDevTV.Saving
+namespace RPG.Saving
 {
     /// <summary>
     /// Implement in any component that has state to save/restore.

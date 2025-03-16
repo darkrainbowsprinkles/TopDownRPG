@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace GameDevTV.Saving
+namespace RPG.Saving
 {
     /// <summary>
     /// To be placed on any GameObject that has ISaveable components that

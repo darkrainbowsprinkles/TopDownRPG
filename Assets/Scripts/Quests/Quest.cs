@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GameDevTV.Inventories;
-using GameDevTV.Utils;
 using UnityEngine;
+using RPG.Inventories;
+using RPG.Utils;
 
 namespace RPG.Quests
 {
@@ -14,16 +14,16 @@ namespace RPG.Quests
         [SerializeField] List<Reward> rewards = new();
 
         [System.Serializable]
-        public class Objective
+        public struct Objective
         {
             public string reference;
             [TextArea] public string description;
-            public bool usesCondition = false;
+            public bool usesCondition;
             public Condition completionCondition;
         }
 
         [System.Serializable]
-        public class Reward
+        public struct Reward
         {         
             [Min(1)] public int number;
             public InventoryItem item;

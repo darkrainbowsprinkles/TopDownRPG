@@ -4,8 +4,8 @@ using RPG.Attributes;
 using UnityEngine.EventSystems;
 using System;
 using UnityEngine.AI;
-using GameDevTV.Inventories;
 using RPG.Core;
+using RPG.Inventories;
 
 namespace RPG.Control
 {

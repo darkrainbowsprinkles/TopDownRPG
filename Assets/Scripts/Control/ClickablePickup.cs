@@ -1,4 +1,4 @@
-using GameDevTV.Inventories;
+using RPG.Inventories;
 using UnityEngine;
 
 namespace RPG.Control

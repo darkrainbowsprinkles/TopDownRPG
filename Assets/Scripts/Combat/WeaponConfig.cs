@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using GameDevTV.Inventories;
 using RPG.Attributes;
+using RPG.Inventories;
 using RPG.Stats;
 using UnityEngine;
 
 namespace RPG.Combat
 {
-    [CreateAssetMenu(menuName = "RPG/Inventory/New Weapon")]
+    [CreateAssetMenu(menuName = "RPG/Inventories/New Weapon")]
     public class WeaponConfig : EquipableItem, IModifierProvider
     {
         [SerializeField] AnimatorOverrideController animatorOverride;

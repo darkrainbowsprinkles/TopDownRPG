@@ -1,7 +1,7 @@
-using GameDevTV.Inventories;
-using RPG.Shops;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Inventories;
+using RPG.Shops;
 
 namespace RPG.UI.Shops
 {

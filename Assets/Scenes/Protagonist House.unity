@@ -1933,7 +1933,6 @@ MonoBehaviour:
           parameters:
           - Get ready for school
           negate: 1
-  checkOnUpdate: 0
 --- !u!4 &940489228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 489180, guid: 626f1b816ba1ee64a9f7cea6ceb529cd,
@@ -4071,7 +4070,7 @@ PrefabInstance:
     - target: {fileID: 3111857275132338473, guid: b52fb5d54be7b2145b1631437eb0d35d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 844.0177
       objectReference: {fileID: 0}
     - target: {fileID: 3190433566985445425, guid: b52fb5d54be7b2145b1631437eb0d35d,
         type: 3}

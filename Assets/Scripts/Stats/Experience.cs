@@ -1,8 +1,7 @@
 using System;
-using GameDevTV.Inventories;
-using GameDevTV.Saving;
 using RPG.Attributes;
 using RPG.Inventories;
+using RPG.Saving;
 using UnityEngine;
 
 namespace RPG.Stats
@@ -10,7 +9,6 @@ namespace RPG.Stats
     public class Experience : MonoBehaviour, ISaveable, IItemStore, IAttributeProvider
     {
         [SerializeField] float experiencePoints = 0f;
-
         public event Action onExperienceGained;
 
         public void GainExperience(float experience)
@@ -35,7 +33,7 @@ namespace RPG.Stats
         }
 
 #if UNITY_EDITOR
-        private void Update()
+        void Update()
         {
             if(Input.GetKey(KeyCode.E))
             {

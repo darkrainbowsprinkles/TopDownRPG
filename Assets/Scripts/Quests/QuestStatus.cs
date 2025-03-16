@@ -9,7 +9,7 @@ namespace RPG.Quests
 
 
         [System.Serializable]
-        class QuestStatusRecord
+        struct QuestStatusRecord
         {
             public string questName;
             public List<string> completedObjectives;
@@ -22,7 +22,7 @@ namespace RPG.Quests
 
         public QuestStatus(object objectState)
         {
-            QuestStatusRecord state = objectState as QuestStatusRecord;
+            QuestStatusRecord state = (QuestStatusRecord)objectState;
             quest = Quest.GetByName(state.questName);
             completedObjectives = state.completedObjectives;
         }

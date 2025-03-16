@@ -1,7 +1,7 @@
-using GameDevTV.Saving;
-using GameDevTV.Utils;
-using RPG.Stats;
 using UnityEngine;
+using RPG.Saving;
+using RPG.Stats;
+using RPG.Utils;
 
 namespace RPG.Attributes
 {

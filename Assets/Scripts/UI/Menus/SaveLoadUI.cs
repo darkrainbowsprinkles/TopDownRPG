@@ -20,7 +20,7 @@ namespace RPG.UI.Menus
                 Destroy(children.gameObject);
             }
 
-            foreach(string saveFile in savingWrapper.ListSaves())
+            foreach(string saveFile in savingWrapper.GetSaves())
             {
                 GameObject buttonInstance  = Instantiate(buttonPrefab, contentRoot);
                 TMP_Text buttonText  = buttonInstance.GetComponentInChildren<TMP_Text>();

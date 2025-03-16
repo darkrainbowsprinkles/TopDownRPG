@@ -1,15 +1,31 @@
-using GameDevTV.Inventories;
+using RPG.Inventories;
 using UnityEngine;
 
 namespace RPG.UI.Inventories
 {
     public class PlayerUI : MonoBehaviour
     {
+        Equipment playerEquipment;
+
         void Awake()
         {
-            GameObject player = GameObject.FindWithTag("Player");
-            player.GetComponent<Equipment>().onItemAdded += GetComponent<Equipment>().AddItem;
-            player.GetComponent<Equipment>().onItemRemoved += GetComponent<Equipment>().RemoveItem;
+            playerEquipment = GameObject.FindWithTag("Player").GetComponent<Equipment>();
+        }
+
+        void OnEnable()
+        {
+            playerEquipment.equipmentUpdated += ReplicateEquipment;
+        }
+
+        void OnDisable()
+        {
+            playerEquipment.equipmentUpdated -= ReplicateEquipment;
+        }
+
+        void ReplicateEquipment()
+        {
+            // TO-DO
+            print("Equipment changed");
         }
     }
 }

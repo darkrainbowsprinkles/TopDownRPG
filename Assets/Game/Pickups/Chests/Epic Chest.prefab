@@ -9,11 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6469539124937441048}
-  - component: {fileID: 7279449806400239274}
+  - component: {fileID: 1113975581070729461}
+  - component: {fileID: 4751205745566662010}
   - component: {fileID: 3041086281185755136}
   - component: {fileID: 414324845538642277}
   - component: {fileID: 5133937589515384398}
-  - component: {fileID: 8293479443859755215}
+  - component: {fileID: 5741407031165128051}
   m_Layer: 0
   m_Name: Epic Chest
   m_TagString: Untagged
@@ -38,8 +39,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7279449806400239274
-BoxCollider:
+--- !u!135 &1113975581070729461
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -49,8 +50,24 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5540829, y: 1, z: 1}
-  m_Center: {x: 0.03433323, y: 0, z: 0}
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0.75}
+--- !u!208 &4751205745566662010
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375262320713271317}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.05, y: 0.5, z: 0.05}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!111 &3041086281185755136
 Animation:
   m_ObjectHideFlags: 0
@@ -108,7 +125,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &8293479443859755215
+--- !u!114 &5741407031165128051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,11 +134,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1375262320713271317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdecb6912ad14644887562a615cc03dd, type: 3}
+  m_Script: {fileID: 11500000, guid: e8c756a4f32f0d945bb0d60bb0f29ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropDistance: 3
-  dropLibrary: {fileID: 0}
 --- !u!1 &2947017010606137378
 GameObject:
   m_ObjectHideFlags: 0

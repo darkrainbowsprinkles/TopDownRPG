@@ -1,11 +1,11 @@
 using UnityEngine;
 using TMPro;
 
-namespace RPG.UI.DamageText
+namespace RPG.UI.Combat
 {
     public class DamageText : MonoBehaviour
     {
-        [SerializeField] TMP_Text damageText = null;
+        [SerializeField] TMP_Text damageText;
 
         public void DestroyText()
         {

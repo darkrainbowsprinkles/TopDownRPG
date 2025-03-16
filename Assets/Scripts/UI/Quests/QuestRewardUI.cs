@@ -1,7 +1,7 @@
-using GameDevTV.Inventories;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Inventories;
 
 namespace RPG.UI.Quests
 {

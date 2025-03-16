@@ -61,7 +61,7 @@ namespace RPG.Audio
             {
                 Health health = controller.GetComponent<Health>();
 
-                enemies.Add(controller);
+                enemies.Remove(controller);
                 
                 health.onDie.RemoveListener(() => enemies.Remove(controller));
             }

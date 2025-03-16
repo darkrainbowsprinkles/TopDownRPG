@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using GameDevTV.Inventories;
 using RPG.Attributes;
 using RPG.Core;
+using RPG.Inventories;
 using UnityEngine;
 
 namespace RPG.Abilities

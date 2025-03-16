@@ -1,20 +1,18 @@
-using System;
-using GameDevTV.Inventories;
-using GameDevTV.Saving;
 using RPG.Control;
+using RPG.Saving;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace RPG.Inventories
 {
-    [RequireComponent(typeof(RandomDropper))]
+    [RequireComponent(typeof(ItemDropper))]
     public class Chest : MonoBehaviour, IRaycastable, ISaveable
     {
         [SerializeField] LootConfig[] loot;
         [SerializeField] UnityEvent onChestOpened;
-        bool looted = false;
-        RandomDropper dropper;
+        ItemDropper itemDropper;
         Animation openAnimation;
+        bool alreadyLooted = false;
 
         [System.Serializable]
         struct LootConfig
@@ -25,18 +23,18 @@ namespace RPG.Inventories
 
         void Awake()
         {
-            dropper = GetComponent<RandomDropper>();
+            itemDropper = GetComponent<RandomDropper>();
             openAnimation = GetComponent<Animation>();
-
+            itemDropper = GetComponent<ItemDropper>();
         }
 
         void LootChest()
         {
-            looted = true;
+            alreadyLooted = true;
             
             foreach(var slot in loot)
             {
-                dropper.DropItem(slot.item, slot.number);
+                itemDropper.DropItem(slot.item, slot.number);
             }
         }
 
@@ -47,7 +45,7 @@ namespace RPG.Inventories
 
         bool IRaycastable.HandleRaycast(PlayerController callingController)
         {
-            if(!looted)
+            if(!alreadyLooted)
             {
                 if(Input.GetKeyDown(callingController.GetInteractionKey()))
                 {
@@ -64,14 +62,14 @@ namespace RPG.Inventories
 
         object ISaveable.CaptureState()
         {
-            return looted;
+            return alreadyLooted;
         }
 
         void ISaveable.RestoreState(object state)
         {
-            looted = (bool)state;
+            alreadyLooted = (bool)state;
 
-            if(looted)
+            if(alreadyLooted)
             {
                 openAnimation.Play();
             }
