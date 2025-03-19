@@ -9,7 +9,7 @@ using RPG.Inventories;
 
 namespace RPG.Control
 {
-    public class PlayerController : Controller
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField] CursorMapping[] cursorMappings;
         [SerializeField] float maxNavMeshProjectionDistance = 40;

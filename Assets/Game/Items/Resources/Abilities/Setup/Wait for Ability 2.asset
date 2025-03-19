@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Wait for Ability 2
   m_EditorClassIdentifier: 
   animationTag: effect
-  timeToEnableControl: 0.7
+  endTime: 0.505

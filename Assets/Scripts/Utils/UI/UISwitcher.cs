@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RPG.UI.Menus
+namespace RPG.Utils.UI
 {
     public class UISwitcher : MonoBehaviour
     {   

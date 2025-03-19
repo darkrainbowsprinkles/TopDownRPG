@@ -8,7 +8,7 @@ using RPG.Utils;
 
 namespace RPG.Control
 {
-    public class AIController : Controller
+    public class AIController : MonoBehaviour
     {
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float chaseDistance = 5f;

@@ -9,44 +9,52 @@ namespace RPG.Abilities.Effects
     public class WaitForAnimationEffect : EffectStrategy
     {
         [SerializeField] string animationTag = "";
-        [SerializeField] [Range(0,1)] float timeToEnableControl = 0.9f;
+        [SerializeField, Range(0, 0.9f)] float endTime = 0.9f;
 
         public override void StartEffect(AbilityData data, Action finished)
         {
-            data.StartCoroutine(WaitForAnimationFinished(data));
+            data.StartCoroutine(WaitForAnimationFinished(data, finished));
         }
 
-        IEnumerator WaitForAnimationFinished(AbilityData data)
+        IEnumerator WaitForAnimationFinished(AbilityData data, Action finished)
         {
             Animator animator = data.GetUser().GetComponent<Animator>();
-            Controller controller = data.GetUser().GetComponent<Controller>();
 
-            if(controller is PlayerController)
-            {
-                animator.ResetTrigger("cancelAbility");
-            }
+            ToggleControl(data.GetUser(), false);
 
-            while(!FinishedPlaying(animator) && !data.IsCancelled())
+            while(!AnimationOver(animator) && !data.IsCancelled())
             {
-                controller.enabled = false;
                 yield return null;
             }
 
-            if(controller is PlayerController)
-            {
-                animator.SetTrigger("cancelAbility");
-            }
+            ToggleControl(data.GetUser(), true);
 
-            controller.enabled = true;
+            finished();
         }
 
-        bool FinishedPlaying(Animator animator)
+        void ToggleControl(GameObject user, bool enabled)
         {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if(user.TryGetComponent(out PlayerController playerController))
+            {
+                playerController.enabled = enabled;
+            }
 
-            return !animator.IsInTransition(0) && 
-                    stateInfo.IsTag(animationTag) && 
-                        stateInfo.normalizedTime >= timeToEnableControl;
+            if(user.TryGetComponent(out AIController aiController))
+            {
+                aiController.enabled = enabled;
+            }
+        }
+
+        bool AnimationOver(Animator animator)
+        {
+            var currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+            if(currentInfo.IsTag(animationTag) && !animator.IsInTransition(0))
+            {
+                return currentInfo.normalizedTime >= endTime;
+            }
+
+            return false;
         }
     }
 }
