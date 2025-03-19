@@ -1005,24 +1005,6 @@ MonoBehaviour:
   saveButton: {fileID: 4533710770848694270}
   saveAndQuitButton: {fileID: 8412558491286275075}
   quitButton: {fileID: 3447026544064099022}
---- !u!114 &8616539476187878953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3921156587024390338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41bb5eb16c8a2b94ab816e4c38da3998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiAnimator: {fileID: 0}
-  enterAnimationTrigger: 
-  exitAnimationTrigger: 
-  toggleControls: 1
-  toggleInput: 0
-  cancelCurrentAction: 0
 --- !u!1001 &389723190229318666
 PrefabInstance:
   m_ObjectHideFlags: 0

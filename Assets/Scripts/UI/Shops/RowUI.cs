@@ -15,9 +15,8 @@ namespace RPG.UI.Shops
         [SerializeField] TextMeshProUGUI quantityField;
         [SerializeField] Button minusButton;
         [SerializeField] Button plusButton;
-
-        Shop currentShop = null;
-        ShopItem item = null;
+        Shop currentShop;
+        ShopItem item;
 
         public void Setup(Shop currentShop, ShopItem item)
         {

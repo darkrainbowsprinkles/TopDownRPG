@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
 using RPG.Utils;
-using RPG.Core;
+using PshychoticLab;
 
 namespace RPG.Inventories
 {
     public class Equipment : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
-        [SerializeField] CharacterPartLocation[] defaultCharacterParts;
+        [SerializeField] EquipmentMeshSet[] defaultEquipmentMeshes;
         Dictionary<EquipLocation, EquipableItem> equippedItems = new();
-        Dictionary<EquipLocation, string[]> defaultPartsLookup = new();
-        CharacterCustomizer customizer;
+        Dictionary<EquipLocation, string[]> defaultMeshes = new();
+        CharacterCustomizer characterCustomizer;
         public event Action equipmentUpdated;
+
+        [System.Serializable]
+        struct EquipmentMeshSet
+        {
+            public EquipLocation slot;
+            public string[] meshes;
+        }
 
         public IEnumerable<EquipLocation> GetAllPopulatedSlots()
         {
@@ -35,13 +42,8 @@ namespace RPG.Inventories
             Debug.Assert(item.CanEquip(slot, this));
 
             equippedItems[slot] = item;
-
-            SetDefaultCharacterPart(slot, false);
-
-            foreach(var characterPart in item.GetCharacterParts())
-            {
-                customizer.ToggleCharacterPart(characterPart, true);
-            }
+            
+            SetEquipmentMesh(item, true);
 
             equipmentUpdated?.Invoke();
         }
@@ -50,49 +52,45 @@ namespace RPG.Inventories
         {
             var item = GetItemInSlot(slot);
 
-            foreach(var characterPart in item.GetCharacterParts())
-            {
-                customizer.ToggleCharacterPart(characterPart, false);
-            }
-
             equippedItems.Remove(slot);
 
-            SetDefaultCharacterPart(slot, true);
+            SetEquipmentMesh(item, false);
 
             equipmentUpdated?.Invoke();
         }
 
-        [System.Serializable]
-        struct CharacterPartLocation
-        {
-            public EquipLocation equipLocation;
-            public string[] characterParts;
-        }
-
         void Awake()
         {
-            customizer = GetComponent<CharacterCustomizer>();
+            characterCustomizer = GetComponent<CharacterCustomizer>();
         }
 
         void Start()
         {
-            foreach(var mesh in defaultCharacterParts)
+            foreach(var mesh in defaultEquipmentMeshes)
             {
-                defaultPartsLookup[mesh.equipLocation] = mesh.characterParts;
-                SetDefaultCharacterPart(mesh.equipLocation, true);
+                defaultMeshes[mesh.slot] = mesh.meshes;
+                SetDefaultEquipmentMesh(mesh.slot, true);
             }
         }
 
-        void SetDefaultCharacterPart(EquipLocation slot, bool enabled)
-        {
-            if(!defaultPartsLookup.ContainsKey(slot)) 
+        void SetEquipmentMesh(EquipableItem item, bool enabled)
+        {   
+            if(defaultMeshes.ContainsKey(item.GetEquipLocation())) 
             {
-                return;
+                SetDefaultEquipmentMesh(item.GetEquipLocation(), !enabled);
             }
-            
-            foreach(string mesh in defaultPartsLookup[slot])
+
+            foreach(var characterPart in item.GetEquipmentMeshes())
             {
-                customizer.ToggleCharacterPart(mesh, enabled);
+                characterCustomizer.ToggleCharacterMesh(characterPart, enabled);
+            }
+        }
+
+        void SetDefaultEquipmentMesh(EquipLocation slot, bool enabled)
+        {
+            foreach(string mesh in defaultMeshes[slot])
+            {
+                characterCustomizer.ToggleCharacterMesh(mesh, enabled);
             }
         }
 
@@ -120,7 +118,7 @@ namespace RPG.Inventories
 
                 if(item != null)
                 {
-                    AddItem(item.GetAllowedEquipLocation(), item);
+                    AddItem(item.GetEquipLocation(), item);
                 }
             }
 

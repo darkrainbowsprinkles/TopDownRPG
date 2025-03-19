@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RPG.Utils;
+using RPG.Control;
 
 namespace RPG.Dialogue
 {
@@ -17,20 +18,28 @@ namespace RPG.Dialogue
 
         public void StartDialogue(AIConversant newConversant, Dialogue newDialogue)
         {
+            GetComponent<PlayerController>().ToggleInput(false);
+
             currentConversant = newConversant;
             currentDialogue = newDialogue;
             currentNode = GetRootNode();
+
             TriggerEnterAction();
+
             onConversationUpdated?.Invoke();
         }
 
         public void Quit()
         {
+            GetComponent<PlayerController>().ToggleInput(true);
+
             currentDialogue = null;
-            TriggerExitAction();
             currentNode = null;
             isChoosing = false;
             currentConversant = null;
+
+            TriggerExitAction();
+
             onConversationUpdated?.Invoke();
         }
 

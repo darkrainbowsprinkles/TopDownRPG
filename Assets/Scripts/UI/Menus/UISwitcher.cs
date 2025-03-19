@@ -13,7 +13,10 @@ namespace RPG.UI.Menus
 
         public void SwitchTo(GameObject UIToDisplay)
         {
-            if(UIToDisplay.transform.parent != transform) return;
+            if(UIToDisplay.transform.parent != transform) 
+            {
+                return;
+            }
 
             foreach(Transform child in transform)
             {

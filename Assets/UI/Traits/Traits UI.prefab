@@ -145,7 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commitButton: {fileID: 2737144891562482730}
   unassignedPointsText: {fileID: 1290973365457443727}
-  traitsContainer: {fileID: 5001146443282354443}
 --- !u!1001 &68777364132631825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,30 +1499,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5747297398110381586}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8811695145437030050 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3858439756948668592, guid: 1ab4dd5ae3ef3d54ea06e72f6004089f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5747297398110381586}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4024683708966887522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8811695145437030050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41bb5eb16c8a2b94ab816e4c38da3998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiAnimator: {fileID: 0}
-  enterAnimationTrigger: traitsFadeIn
-  exitAnimationTrigger: traitsFadeOut
-  toggleControls: 0
-  toggleInput: 0
-  cancelCurrentAction: 0
 --- !u!1001 &6352345248631529763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2143,7 +2118,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8811695145437030050}
+      objectReference: {fileID: 7137658947808725764}
     - target: {fileID: 6469480200057308161, guid: 5fd350b0cf8fe8b48bf8615c0d2858e1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState

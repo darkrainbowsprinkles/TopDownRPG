@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Inventories
@@ -25,12 +26,12 @@ namespace RPG.Inventories
 
         void ReplicateEquipment()
         {
-            var prewiewSlots = previewEquipment.GetAllPopulatedSlots();
-            var playerSlots = playerEquipment.GetAllPopulatedSlots();
+            var prewiewSlots = new List<EquipLocation>(previewEquipment.GetAllPopulatedSlots());
+            var playerSlots = new List<EquipLocation>(playerEquipment.GetAllPopulatedSlots());
 
             foreach(var previewSlot in prewiewSlots)
             {
-                if(playerEquipment.GetItemInSlot(previewSlot))
+                if(!playerEquipment.GetItemInSlot(previewSlot))
                 {
                     previewEquipment.RemoveItem(previewSlot);
                 }
@@ -39,7 +40,6 @@ namespace RPG.Inventories
             foreach(var slot in playerSlots)
             {
                 var item = playerEquipment.GetItemInSlot(slot);
-
                 previewEquipment.AddItem(slot, item);
             }
         }

@@ -1,5 +1,4 @@
 using RPG.Control;
-using TMPro;
 using UnityEngine;
 
 namespace RPG.UI.Menus
@@ -20,8 +19,6 @@ namespace RPG.UI.Menus
 
         void Redraw()
         {
-            if(listRoot == null) return;
-
             foreach(Transform child in listRoot)
             {
                 Destroy(child.gameObject);

@@ -16,18 +16,18 @@ namespace RPG.UI.Quests
             this.questList = questList;
         }
 
-        public void RefreshUI()
+        public void Redraw()
         {
             button.interactable = questList.GetFilter() != questType;
         }
 
-        private void Awake()
+        void Awake()
         {
             button = GetComponent<Button>();
             button.onClick.AddListener(SelectFilter);
         }
 
-        private void SelectFilter()
+        void SelectFilter()
         {
             questList.SelectFilter(questType);
         }

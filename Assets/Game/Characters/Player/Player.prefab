@@ -69818,26 +69818,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc10940e5e2494895230945be88105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCharacterParts:
-  - equipLocation: 0
-    characterParts:
+  defaultEquipmentMeshes:
+  - slot: 0
+    meshes:
     - Chr_Hair_38
     - Chr_Head_Male_00
     - Chr_Eyebrow_Male_09
-  - equipLocation: 2
-    characterParts:
+  - slot: 2
+    meshes:
     - Chr_Torso_Male_00
     - Chr_ArmUpperRight_Male_00
     - Chr_ArmUpperLeft_Male_00
-  - equipLocation: 3
-    characterParts:
+  - slot: 3
+    meshes:
     - Chr_Hips_Male_00
-  - equipLocation: 4
-    characterParts:
+  - slot: 4
+    meshes:
     - Chr_LegLeft_Male_00
     - Chr_LegRight_Male_00
-  - equipLocation: 7
-    characterParts:
+  - slot: 7
+    meshes:
     - Chr_ArmLowerRight_Male_00
     - Chr_ArmLowerLeft_Male_00
     - Chr_HandRight_Male_00

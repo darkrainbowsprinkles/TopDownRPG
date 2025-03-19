@@ -242,9 +242,8 @@ GameObject:
   - component: {fileID: 6296825127754559624}
   - component: {fileID: 5570869886995949002}
   - component: {fileID: 2839117394802426191}
-  - component: {fileID: 6121055535390678194}
-  - component: {fileID: 6816642337371548323}
   - component: {fileID: 2221662013678413276}
+  - component: {fileID: 6121055535390678194}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -355,6 +354,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!225 &2221662013678413276
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920086357042914717}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &6121055535390678194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,36 +386,6 @@ MonoBehaviour:
     type: 3}
   conversantName: {fileID: 2098278762197783215}
   displayDelay: 0.03
---- !u!114 &6816642337371548323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6920086357042914717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41bb5eb16c8a2b94ab816e4c38da3998, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiAnimator: {fileID: 0}
-  enterAnimationTrigger: dialogueFadeIn
-  exitAnimationTrigger: fadeInUI
-  toggleControls: 1
-  toggleInput: 1
-  cancelCurrentAction: 1
---- !u!225 &2221662013678413276
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6920086357042914717}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &8431688870758925568
 GameObject:
   m_ObjectHideFlags: 0

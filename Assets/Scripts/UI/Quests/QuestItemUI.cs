@@ -19,12 +19,12 @@ namespace RPG.UI.Quests
             SetText();
         }
 
-        private void Start()
+        void Start()
         {
             GetComponent<Button>().onClick.AddListener(() => questTooltip.Setup(status));
         }
 
-        private void SetText()
+        void SetText()
         {
             Color textColor = status.IsComplete() ? Color.gray : title.color;
             title.color = textColor;

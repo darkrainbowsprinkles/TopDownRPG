@@ -1,31 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Core
+// Code provided by @darkrainbowsprinkles
+
+namespace PshychoticLab
 {
     public class CharacterCustomizer : MonoBehaviour
     {
-        Dictionary<string, Transform> characterPartsLookup;
+        Dictionary<string, GameObject> characterMeshLookup;
 
-        public void ToggleCharacterPart(string partName, bool enabled)
+        public void ToggleCharacterMesh(string partName, bool enabled)
         {
-            if(characterPartsLookup == null) 
+            if(characterMeshLookup == null) 
             {
                 BuildLookup();
             }
 
-            if(!characterPartsLookup.ContainsKey(partName))
+            if(!characterMeshLookup.ContainsKey(partName))
             {
                 Debug.LogError($"Character part {partName} not found");
                 return;
             }
 
-            characterPartsLookup[partName].gameObject.SetActive(enabled);
+            characterMeshLookup[partName].SetActive(enabled);
         }
 
         void BuildLookup()
         {
-            characterPartsLookup = new Dictionary<string, Transform>();
+            characterMeshLookup = new Dictionary<string, GameObject>();
 
             // Male Parts
             AddToLookup("Male_Head_All_Elements");
@@ -91,13 +93,14 @@ namespace RPG.Core
 
                 foreach(Transform child in root)
                 {
-                    if(characterPartsLookup.ContainsKey(child.name))
+                    if(characterMeshLookup.ContainsKey(child.name))
                     {
                         Debug.LogError($"Duplicated character part name: {child.name}");
                         return;
                     }
 
-                    characterPartsLookup[child.name] = child;
+                    characterMeshLookup[child.name] = child.gameObject;
+
                     child.gameObject.SetActive(false);
                 }
             }

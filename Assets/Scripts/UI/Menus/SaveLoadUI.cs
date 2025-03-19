@@ -13,7 +13,6 @@ namespace RPG.UI.Menus
         void OnEnable()
         {
             SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
-            if(savingWrapper == null) return;
 
             foreach(Transform children in contentRoot)
             {

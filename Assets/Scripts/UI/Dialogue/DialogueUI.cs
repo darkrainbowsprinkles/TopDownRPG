@@ -9,7 +9,6 @@ namespace RPG.UI.Dialogue
 {
     public class DialogueUI : MonoBehaviour, IPointerDownHandler
     {
-        PlayerConversant playerConversant;
         [SerializeField] TextMeshProUGUI AIText;
         [SerializeField] Button nextButton;
         [SerializeField] GameObject AIResponse;
@@ -17,21 +16,40 @@ namespace RPG.UI.Dialogue
         [SerializeField] GameObject choicePrefab;
         [SerializeField] TextMeshProUGUI conversantName;
         [SerializeField] float displayDelay = 0.03f;
+        PlayerConversant playerConversant;
+        Animator animator;
         Coroutine displayCoroutine = null;
         bool skipDelay = false;
+
+        void Awake()
+        {
+            animator = GetComponentInParent<Animator>();
+        }
+
+        void OnEnable()
+        {
+            animator.ResetTrigger("allUIFadeIn");
+            animator.SetTrigger("dialogueFadeIn");
+        }
+
+        void OnDisable()
+        {
+            animator.ResetTrigger("dialogueFadeIn");
+            animator.SetTrigger("allUIFadeIn");
+        }
 
         void Start()
         {
             playerConversant = GameObject.FindWithTag("Player").GetComponent<PlayerConversant>();
 
-            playerConversant.onConversationUpdated += UpdateUI;
+            playerConversant.onConversationUpdated += Redraw;
 
             nextButton.onClick.AddListener(() => playerConversant.Next());
 
-            UpdateUI();
+            Redraw();
         }
 
-        void UpdateUI()
+        void Redraw()
         {
             gameObject.SetActive(playerConversant.IsActive());
 

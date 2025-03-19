@@ -20,12 +20,12 @@ namespace RPG.Inventories
             return equipCondition.Check(equipment.GetComponents<IPredicateEvaluator>());
         }
 
-        public EquipLocation GetAllowedEquipLocation()
+        public EquipLocation GetEquipLocation()
         {
             return allowedEquipLocation;
         }
 
-        public string[] GetCharacterParts()
+        public string[] GetEquipmentMeshes()
         {
             return characterParts;
         }

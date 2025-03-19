@@ -25833,7 +25833,7 @@ Transform:
   m_Children:
   - {fileID: 8848703341449068216}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3967756358862670944
 Animator:
@@ -25896,7 +25896,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc10940e5e2494895230945be88105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCharacterParts: []
+  defaultEquipmentMeshes:
+  - slot: 0
+    meshes:
+    - Chr_Hair_38
+    - Chr_Head_Male_00
+    - Chr_Eyebrow_Male_09
+  - slot: 2
+    meshes:
+    - Chr_Torso_Male_00
+    - Chr_ArmUpperRight_Male_00
+    - Chr_ArmUpperLeft_Male_00
+  - slot: 3
+    meshes:
+    - Chr_Hips_Male_00
+  - slot: 4
+    meshes:
+    - Chr_LegLeft_Male_00
+    - Chr_LegRight_Male_00
+  - slot: 7
+    meshes:
+    - Chr_ArmLowerRight_Male_00
+    - Chr_ArmLowerLeft_Male_00
+    - Chr_HandRight_Male_00
+    - Chr_HandLeft_Male_00
 --- !u!114 &2260199863497286263
 MonoBehaviour:
   m_ObjectHideFlags: 0

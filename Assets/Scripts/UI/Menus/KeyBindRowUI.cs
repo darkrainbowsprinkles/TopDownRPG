@@ -26,12 +26,12 @@ namespace RPG.UI.Menus
             Redraw();
         }
 
-        private void Start()
+        void Start()
         {
             keyBindButton.onClick.AddListener(Rebind);
         }
 
-        private void Redraw()
+        void Redraw()
         {
             string text = playerAction.ToString();
             string formattedText = Regex.Replace(text, @"([a-z])([A-Z0-9])", "$1 $2");
@@ -47,12 +47,12 @@ namespace RPG.UI.Menus
             }   
         }
 
-        private void Rebind()
+        void Rebind()
         {
             StartCoroutine(WaitForKeyPress());
         }
 
-        private IEnumerator WaitForKeyPress()
+        IEnumerator WaitForKeyPress()
         {
             inputReader.enabled = false;
             keyBindButton.interactable = false;
@@ -70,6 +70,7 @@ namespace RPG.UI.Menus
                         yield break;
                     }
                 }
+                
                 yield return null;
             }
         }

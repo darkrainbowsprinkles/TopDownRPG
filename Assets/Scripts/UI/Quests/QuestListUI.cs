@@ -40,7 +40,7 @@ namespace RPG.UI.Quests
 
             foreach (QuestFilterUI questFilterUI in GetComponentsInChildren<QuestFilterUI>())
             {
-                questFilterUI.RefreshUI();
+                questFilterUI.Redraw();
             }
    
             if(questList.GetFilteredStatuses().Count() > 0)

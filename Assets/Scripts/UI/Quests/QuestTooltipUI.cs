@@ -25,7 +25,7 @@ namespace RPG.UI.Quests
             FillRewards();
         }
 
-        private void FillTitles()
+        void FillTitles()
         {
             if(status == null)
             {
@@ -42,7 +42,7 @@ namespace RPG.UI.Quests
             rewards.text = "Rewards";
         }
 
-        private void FillObjectives()
+        void FillObjectives()
         {
             foreach(Transform child in objectiveContainer)
             {
@@ -68,7 +68,7 @@ namespace RPG.UI.Quests
             }
         }
 
-        private void FillRewards()
+        void FillRewards()
         {
             foreach(Transform child in rewardsContainer)
             {

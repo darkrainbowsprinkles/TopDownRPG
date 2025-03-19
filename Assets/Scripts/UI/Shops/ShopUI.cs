@@ -15,10 +15,8 @@ namespace RPG.UI.Shops
         [SerializeField] Button switchButton;
         [SerializeField] RowUI rowPrefab;
         [SerializeField] TextMeshProUGUI totalField;
-        
-        Shopper shopper = null;
-        Shop currentShop = null;
-
+        Shopper shopper;
+        Shop currentShop;
         Color originalTotalTextColor;
 
         void Start()
@@ -96,7 +94,7 @@ namespace RPG.UI.Shops
 
             foreach(FilterButtonUI button in GetComponentsInChildren<FilterButtonUI>())
             {
-                button.RefreshUI();
+                button.Redraw();
             }
         }
 
