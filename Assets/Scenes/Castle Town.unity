@@ -2504,7 +2504,7 @@ PrefabInstance:
     - target: {fileID: 5133937589515384398, guid: 049a97fe60853964b86d34fd6afc3feb,
         type: 3}
       propertyPath: loot.Array.data[5].number
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5133937589515384398, guid: 049a97fe60853964b86d34fd6afc3feb,
         type: 3}

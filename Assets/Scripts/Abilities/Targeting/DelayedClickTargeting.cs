@@ -9,15 +9,14 @@ namespace RPG.Abilities.Targeting
     [CreateAssetMenu(menuName = "RPG/Abilities/Targeting/Delayed Click Targeting")]
     public class DelayedClickTargeting : TargetingStrategy
     {
+        [SerializeField] string targetingAnimationTrigger = "";
         [SerializeField] Texture2D cursorTexture;
         [SerializeField] Vector2 cursorHotspot;
         [SerializeField] LayerMask layerMask;
         [SerializeField] float areaAffectRadius;
         [SerializeField] GameObject targetingEffectPrefab;
         [SerializeField] float heightEffectOffset = 0.31f;
-        [SerializeField] string targetingAnimationTrigger = "";
-
-        GameObject targetingEffectInstance = null;
+        GameObject targetingEffectInstance;
 
         public override void StartTargeting(AbilityData data, Action finished)
         {
@@ -39,7 +38,7 @@ namespace RPG.Abilities.Targeting
                 targetingEffectInstance.SetActive(true);
             }
 
-            if(!animator.IsInTransition(0) && targetingAnimationTrigger != "")
+            if(targetingAnimationTrigger != "")
             {
                 animator.SetTrigger(targetingAnimationTrigger);
                 animator.ResetTrigger("cancelAbility");
@@ -78,12 +77,14 @@ namespace RPG.Abilities.Targeting
                 yield return null;
             }
 
-            targetingEffectInstance.gameObject.SetActive(false);
+            targetingEffectInstance.SetActive(false);
+
             playerController.enabled = true;
 
             if(targetingAnimationTrigger != "")
             {
                 animator.SetTrigger("cancelAbility");
+                animator.ResetTrigger(targetingAnimationTrigger);
             }
             
             finished();

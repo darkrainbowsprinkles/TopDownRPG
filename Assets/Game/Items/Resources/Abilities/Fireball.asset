@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a791dbfcd6ba5941a758fbd0ce640b7, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  itemID: a06acfee-3b26-485f-9e96-9edad7da4c35
+  displayName: Inferno Burst
+  description: Born from the depths of ancient tomes and honed through the study
+    of arcane arts, this spell channels the raw essence of flames, unleashing a cataclysmic
+    inferno upon unsuspecting foes
+  icon: {fileID: 21300000, guid: ef55217c4d154d24dbb1aa5a9c822981, type: 3}
+  pickup: {fileID: 8063493189960858902, guid: 47c9c4bd3629cad4db8e1920a955f997, type: 3}
+  stackable: 0
+  price: 100
+  category: 5
+  rarity: 4
+  consumable: 0
+  targetingStrategy: {fileID: 11400000, guid: bc62d0f48faf6e04082bee7605fb4317, type: 2}
+  filterStrategies: []
+  effectStrategies:
+  - {fileID: 11400000, guid: 1bb2b12b345171c46879a8e6d8c5048d, type: 2}
+  - {fileID: 11400000, guid: 47ed2c73940be7743a227d4e7cc7d9db, type: 2}
+  - {fileID: 11400000, guid: 643bc07c89464674d9059b98d1dd704e, type: 2}
+  coolDownTime: 5
+  manaCost: 30

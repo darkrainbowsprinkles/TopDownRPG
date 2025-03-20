@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a791dbfcd6ba5941a758fbd0ce640b7, type: 3}
+  m_Name: Stormstrike
+  m_EditorClassIdentifier: 
+  itemID: b0da39b3-1cd5-4e73-9128-590210a8f46e
+  displayName: Stormstrike
+  description: This legendary thunder magic spell holds a tale of ancient lore, whispered
+    among sages and passed down through generations.
+  icon: {fileID: 21300000, guid: ae496f5dad56ea645b72d374a0376368, type: 3}
+  pickup: {fileID: 88249575443104631, guid: 9e06b9e3d4596ea4db524a1e7c8f6c59, type: 3}
+  stackable: 0
+  price: 0
+  category: 0
+  rarity: 3
+  consumable: 0
+  targetingStrategy: {fileID: 11400000, guid: 72db9cde246a65f47b68b7330838cc7c, type: 2}
+  filterStrategies:
+  - {fileID: 11400000, guid: 2e65f85867d8b2b4787fba92230be080, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: 2e4dfb2b9570c95448a2c879fe55454a, type: 2}
+  - {fileID: 11400000, guid: 4d88fd80015bab944ad91c586fbd2124, type: 2}
+  coolDownTime: 20
+  manaCost: 30
